@@ -31,9 +31,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "src/styles.scss", 
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss"
+              ],
+              "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              ]
           },
           "configurations": {
             "production": {
@@ -53,8 +59,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -127,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "FeUnisan"
+  "defaultProject": "FeUnisan",
+  "cli": {
+    "analytics": "f1cb009c-7cc1-4c34-a400-e042717d4f68"
+  }
 }

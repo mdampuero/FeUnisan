@@ -1,0 +1,41 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Carrito</li>
+    </ol>
+</nav>
+<div class="table-responsive" *ngIf="cartService.list.length > 0">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col" class="text-right">Precio</th>
+                <th scope="col" class="text-center">Cantidad</th>
+                <th scope="col" class="text-right">Subtotal</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartService.list; let i=index;">
+                <th scope="row">{{ i + 1}}</th>
+                <td>{{ item.name }}</td>
+                <td class="text-right">{{ item.currency.symbol }} {{ item.price | number:'1.2-2' }}</td>
+                <td class="text-center">{{ item.quantity }}</td>
+                <td class="text-right">{{ item.currency.symbol }} {{ (item.quantity * item.price) | number:'1.2-2' }}</td>
+                <td class="text-center"><i class="fa fa-trash-alt text-warning cursor-pointer" (click)="cartService.delete(item)"></i></td>
+            </tr>
+            <tr>
+                <th scope="col" colspan="4" class="text-right">TOTAL: </th>
+                <th scope="col" class="text-right">$ {{ cartService.total | number:'1.2-2'}}</th>
+                <th scope="col" class="text-center"><i class="fa fa-trash text-danger cursor-pointer" (click)="cartService.clear()"></i></th>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+        <a role="button" routerLink="/pago" class="btn btn-success"><i clasS="fa fa-check"></i> Confirmar pedido</a>
+    </div>
+</div>
+<div class="alert alert-warning" *ngIf="cartService.list.length == 0">
+    No tiene productos en su carrito.
+</div>

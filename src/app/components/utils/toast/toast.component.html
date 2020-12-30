@@ -1,0 +1,26 @@
+<ngb-toast
+      *ngFor="let toast of toastService.toasts"
+      [header]="toast.headertext"
+      [class]="toast.classname"
+      [autohide]="toast.autohide"
+      [delay]="toast.delay || 5000"
+      (hide)="toastService.remove(toast)"
+    >
+      <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+        <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
+      </ng-template>
+
+      <ng-template #text>{{ toast.textOrTpl }}</ng-template>
+    </ngb-toast>
+    <!-- <button class="btn btn-primary" (click)="showStandard()" ngbTooltip="Will disappear in 5s">Standard toast</button>&nbsp;
+    <button class="btn btn-success" (click)="showSuccess()" ngbTooltip="Will disappear in 10s">Success toast</button>&nbsp;
+    <button class="btn btn-danger" (click)="showError()" ngbTooltip="Will disappear in 10s">Error toast</button>&nbsp;
+    <ng-template #customTpl>
+        <i>This is</i> a <u>custome</u> template <b>toast message</b>
+      </ng-template>
+    <ng-template #customTpl2>
+        <i>This is</i> a <u>custome</u> template <b>toast message321312312</b>
+      </ng-template>
+      
+      <button class="btn btn-info" (click)="showCustomToast(customTpl)" ngbTooltip="Will disappear in 15s">Custom toast</button>&nbsp;
+      <button class="btn btn-info" (click)="showCustomToast(customTpl2)" ngbTooltip="Will disappear in 15s">Custom toast</button>&nbsp; -->

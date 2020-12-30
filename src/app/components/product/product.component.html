@@ -1,0 +1,40 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Producto</li>
+    </ol>
+</nav>
+<div class="row" *ngIf="ready">
+    <div class="col-md-6">
+        <img src="https://picsum.photos/300?random={{ data.id }}" class="card-img-top" alt="...">
+    </div>
+    <div class="col-md-6">
+        <h2>{{ data.name }}</h2>
+        <hr>
+        <p>{{ data.description}}</p>
+        <div class="row">
+            <div class="col-sm-7">
+                <h1 class="text-info">{{ data.currency.symbol }} {{ data.price }}</h1>
+            </div>
+            <div class="col-sm-5">
+                <div class="input-group pt-1">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-primary" (click)="btnMinus()" type="button"><i class="fa fa-minus"></i></button>
+                    </div>
+                    <input type="text" [(ngModel)]="data.quantity" class="form-control text-center" placeholder="">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" (click)="btnPlus()" type="button"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <button class="btn btn-outline-primary" (click)="addCart()">
+            <span *ngIf="!itemCart">Añadir al carrito</span>
+            <span *ngIf="itemCart">Actualizar</span>
+        </button>
+    </div>
+</div>
+
+
+  

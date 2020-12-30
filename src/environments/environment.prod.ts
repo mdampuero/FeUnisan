@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'http://unisan.apachecms.com.ar:8080/',
+  apiUrl: 'app.php/api/'
 };

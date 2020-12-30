@@ -1,0 +1,22 @@
+<div class="row pt-5">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Login</h5>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <input type="text" [(ngModel)]="email" placeholder="Email" class="form-control"> 
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="password" [(ngModel)]="password" placeholder="Contraseña" class="form-control"> 
+                    </div>
+                </div>
+                <button class="btn btn-block btn-info" (click)="login()">Ingresar</button>
+              </div>
+            
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>

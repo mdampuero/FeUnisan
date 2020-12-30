@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-3" *ngFor="let item of items; let i=index;">
+        <div class="card cursor-pointer" (click)="goToProduct(item.id)">
+            <img src="https://picsum.photos/200?random={{ i }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <h4 class="text-info font-weight-bold">{{ item.currency.symbol }} {{ item.price }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
