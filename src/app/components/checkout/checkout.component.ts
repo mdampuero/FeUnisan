@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit {
     private router: Router,
     public toastService: ToastService
     ) { 
-      if(!this.loginService.user.id) this.router.navigate(['/login']);
+      
     }
 
   ngOnInit(): void {
@@ -32,33 +32,7 @@ export class CheckoutComponent implements OnInit {
 
   pay(){
     
-    this.spinner.show();
-    this.apiService.sendOrder(this.cartService).subscribe(
-      (data:any) => {
-        this.spinner.hide();
-        this.apiService.sendEmail(data.id);
-        Swal.fire(
-          {
-            title: '¡Pedido enviado!',
-            text: 'Nº de pedido: #'+data.id,
-            icon: 'success',
-            allowOutsideClick: false,
-            confirmButtonText: 'Aceptar'
-          }
-        ).then((result) => {
-          if (result.isConfirmed) {
-            this.router.navigate(['/mispedidos']);
-          }
-        })
-        this.cartService.clear();
-      },
-      (error) => {
-        this.spinner.hide();
-      },
-      () => {
-        //this.spinner.hide();
-      }
-    );
+    
   }
 
 }

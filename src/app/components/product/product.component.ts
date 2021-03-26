@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/db/cart.service';
 import { ToastService } from './../../services/toast.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-product',
@@ -16,6 +17,7 @@ export class ProductComponent implements OnInit {
   public data:any;
   public itemCart:any;
   public ready:boolean = false;
+  public environment:any=environment;
   constructor(
     private route: ActivatedRoute,
     private api:ApiService,

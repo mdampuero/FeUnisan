@@ -1,0 +1,198 @@
+<section id="services">
+    <div class="container wow fadeIn">
+        <div class="section-header">
+            <h3 class="section-title">Nuestros servicios</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 text-center">
+                <div class="icon-svg active wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='INDUSTRY'}" data-wow-delay="0.2s" (click)="selectCategory('INDUSTRY')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
+                        <text class="txt-svg" transform="translate(0 67.479)">
+                            <tspan x="9.655" y="18">INDUSTRIA</tspan>
+                        </text>
+                        <g transform="translate(23.115)">
+                            <path class="fill-svg"
+                                d="M66.882,68.831V66.219A3.923,3.923,0,0,0,62.963,62.3H59.442l-.4-13.1a2.621,2.621,0,0,0-2.612-2.573H53.821A2.62,2.62,0,0,0,51.209,49.2l-.4,13.1H46.379l-.4-13.1a2.62,2.62,0,0,0-2.612-2.573H40.757A2.62,2.62,0,0,0,38.146,49.2l-.4,13.1H33.316l-.4-13.1a2.621,2.621,0,0,0-2.612-2.573H27.694A2.621,2.621,0,0,0,25.082,49.2l-.4,13.1H19.817l-.709-23.411a5.157,5.157,0,0,0,1.19-.965,6.382,6.382,0,1,0-3.36-8.677q-.237-.022-.477-.022a5.2,5.2,0,0,0-4.824,7.124,2.637,2.637,0,0,0-1.676,2.4L9.088,67.525H3.919A3.923,3.923,0,0,0,0,71.444v2.613a3.925,3.925,0,0,0,2.613,3.694V83.2H1.306a1.306,1.306,0,0,0,0,2.613h64.27a1.306,1.306,0,0,0,0-2.613H64.27V72.526a3.926,3.926,0,0,0,2.613-3.694ZM53.82,49.276a.069.069,0,0,1,.012-.039h2.59a.07.07,0,0,1,.012.039L56.829,62.3h-3.4Zm-13.063,0a.069.069,0,0,1,.012-.039h2.59a.069.069,0,0,1,.012.039L43.765,62.3h-3.4Zm-13.063,0a.068.068,0,0,1,.012-.039H30.3a.068.068,0,0,1,.012.039L30.7,62.3H27.3ZM16.46,31.838a2.577,2.577,0,0,1,.872.151,1.306,1.306,0,0,0,1.707-.909,3.77,3.77,0,1,1,1.577,4.074,1.306,1.306,0,0,0-1.875.476,2.61,2.61,0,0,1-.866.946,2.581,2.581,0,0,0-1.385-.4H14.566a2.581,2.581,0,0,1,1.894-4.336Zm-3.889,6.988a.068.068,0,0,1,.012-.039h3.9a.068.068,0,0,1,.012.039l.718,23.71a3.917,3.917,0,0,0-2.355,4.989H11.7ZM2.613,71.444a1.308,1.308,0,0,1,1.306-1.306H17.243V72.75H6.532a1.306,1.306,0,0,0-1.306,1.306,1.306,1.306,0,1,1-2.613,0ZM5.225,83.2V77.749a3.936,3.936,0,0,0,2.389-2.386h9.629V83.2Zm14.63,0V70.137H34.878a1.306,1.306,0,1,0,0-2.613H18.549a1.306,1.306,0,1,1,0-2.612H62.963a1.308,1.308,0,0,1,1.306,1.306v2.613a1.306,1.306,0,1,1-2.613,0,1.306,1.306,0,0,0-1.306-1.306H46.634a1.306,1.306,0,1,0,0,2.613H59.269a3.936,3.936,0,0,0,2.389,2.386V83.2Z"
+                                transform="translate(0 -25.626)" />
+                            <path class="fill-svg"
+                                d="M175.806,386.373a1.306,1.306,0,0,0-1.306,1.306v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,175.806,386.373Z"
+                                transform="translate(-151.705 -339.249)" />
+                            <path class="fill-svg"
+                                d="M218.306,386.373A1.306,1.306,0,0,0,217,387.679v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,218.306,386.373Z"
+                                transform="translate(-188.653 -339.249)" />
+                            <path class="fill-svg"
+                                d="M260.806,386.373a1.306,1.306,0,0,0-1.306,1.306v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,260.806,386.373Z"
+                                transform="translate(-225.602 -339.249)" />
+                            <path class="fill-svg"
+                                d="M303.306,386.373A1.306,1.306,0,0,0,302,387.679v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,303.306,386.373Z"
+                                transform="translate(-262.55 -339.249)" />
+                            <path class="fill-svg"
+                                d="M345.806,386.373a1.306,1.306,0,0,0-1.306,1.306v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,345.806,386.373Z"
+                                transform="translate(-299.498 -339.249)" />
+                            <path class="fill-svg"
+                                d="M388.306,386.373A1.306,1.306,0,0,0,387,387.679v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,388.306,386.373Z"
+                                transform="translate(-336.446 -339.249)" />
+                            <path class="fill-svg"
+                                d="M430.806,386.373a1.306,1.306,0,0,0-1.306,1.306v2.612a1.306,1.306,0,1,0,2.613,0v-2.612A1.306,1.306,0,0,0,430.806,386.373Z"
+                                transform="translate(-373.395 -339.249)" />
+                            <path class="fill-svg"
+                                d="M303.3,346.371h0a1.306,1.306,0,1,0,1.307,1.306A1.306,1.306,0,0,0,303.3,346.371Z"
+                                transform="translate(-262.547 -304.472)" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="icon-svg mt-4 pt-0 wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='HOME'}" data-wow-delay="0.4s" (click)="selectCategory('HOME')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
+                        <g transform="translate(0 -0.179)">
+                            <rect style="fill:none;" width="122" height="122" transform="translate(0 0.179)" />
+                            <g transform="translate(0 16.059)">
+                                <text class="txt-svg" transform="translate(0 62.837)">
+                                    <tspan x="26.647" y="18">HOGAR</tspan>
+                                </text>
+                                <g class="fill-svg" transform="translate(35.075 0)">
+                                    <path
+                                        d="M225,146.934h4.994a1,1,0,0,0,1-1v-4.495a3.5,3.5,0,0,0-6.991,0v4.495A1,1,0,0,0,225,146.934Zm1-5.493a1.5,1.5,0,1,1,3,0v3.5h-3Z"
+                                        transform="translate(-201.627 -124.318)" />
+                                    <path
+                                        d="M48.445,46.171V34.307a3.008,3.008,0,0,0,.77-.1,2.992,2.992,0,0,0,.728-5.48L36.46,20.94V17.372a3,3,0,0,0,2.989-3V10.6a3,3,0,0,0-1.7-2.7l-10.388-6a2.986,2.986,0,0,0-1.484-.4h-.007a2.99,2.99,0,0,0-1.488.4L13.945,7.927A2.981,2.981,0,0,0,12.3,10.6v1.776a3,3,0,0,0,2.98,3V20.94l-2.689,1.552a1,1,0,0,0,1,1.73l1.69-.976v2.3L3.79,32.174a.994.994,0,0,1-1-1.72L5.8,28.717a1,1,0,0,0-1-1.73l-3.01,1.738A2.992,2.992,0,0,0,2.521,34.2a3.007,3.007,0,0,0,.77.1V46.12H3.261a3.261,3.261,0,1,0,0,6.522H47.877a3.261,3.261,0,0,0,.569-6.471Zm.5-15.717a.994.994,0,1,1-1,1.72L36.46,25.542v-2.3ZM14.294,12.378V10.6a1,1,0,0,1,.561-.9c.021-.01.041-.021.061-.032L25.375,3.634a.976.976,0,0,1,.493-.132h0a.972.972,0,0,1,.489.131L36.783,9.651q.041.024.084.043a1,1,0,0,1,.584.909v3.772a1,1,0,1,1-2,0V11.747a1,1,0,0,0-.5-.865L26.368,5.924a1,1,0,0,0-1,0l-8.578,4.952a1,1,0,0,0-.5.865v.636a1,1,0,1,1-2,0ZM5.289,33.615l11.486-6.631a1,1,0,0,0,.5-.865v-11.5a2.989,2.989,0,0,0,1.015-2.245v-.059l7.579-4.376,7.587,4.38v2.052a2.989,2.989,0,0,0,1.007,2.238v9.506a1,1,0,0,0,.5.865l11.486,6.631V46.121H30.862V37.605a4.994,4.994,0,0,0-9.988,0v6.708a16.181,16.181,0,0,0-5.888-1.335,9.065,9.065,0,0,0-4.932,1.7,7.27,7.27,0,0,1-3.992,1.438H5.289V33.615Zm23.575,12.5a19.7,19.7,0,0,1-5.993-1.081V37.605a3,3,0,1,1,5.993,0Zm19.012,4.532H3.261a1.263,1.263,0,1,1,0-2.527h2.8a9.206,9.206,0,0,0,5.027-1.728,7.139,7.139,0,0,1,3.9-1.414,14.839,14.839,0,0,1,5.359,1.272,23.791,23.791,0,0,0,9.093,1.87H47.877a1.263,1.263,0,1,1,0,2.527Z"
+                                        transform="translate(0 -1.505)" />
+                                    <path
+                                        d="M93.956,326.44H98.95a1,1,0,0,0,1-1v-3.5a3.5,3.5,0,0,0-6.991,0v3.5A1,1,0,0,0,93.956,326.44Zm1-4.495a1.5,1.5,0,0,1,3,0v2.5h-3Z"
+                                        transform="translate(-83.673 -286.794)" />
+                                    <path
+                                        d="M356.043,326.44h4.994a1,1,0,0,0,1-1v-3.5a3.5,3.5,0,1,0-6.991,0v3.5A1,1,0,0,0,356.043,326.44Zm1-4.495a1.5,1.5,0,0,1,3,0v2.5h-3Z"
+                                        transform="translate(-319.583 -286.794)" />
+                                    <path d="M83.06,234.795a1,1,0,0,0,0-2h0a1,1,0,0,0,0,2Z"
+                                        transform="translate(-73.865 -209.696)" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="icon-svg mt-4 pt-0 wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='EVENT'}" data-wow-delay="0.6s" (click)="selectCategory('EVENT')">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
+                        <g transform="translate(0 -0.359)">
+                            <rect style="fill:none;" width="122" height="122" transform="translate(0 0.359)" />
+                            <g transform="translate(0 19.918)">
+                                <text class="txt-svg" transform="translate(0 56.412)">
+                                    <tspan x="16.927" y="18">EVENTOS</tspan>
+                                </text>
+                                <g class="fill-svg" transform="translate(39.65 0)">
+                                    <path
+                                        d="M37.989,3.618H34.069V2.467a2.467,2.467,0,0,0-4.934,0V3.618H15.321V2.467a2.467,2.467,0,1,0-4.934,0V3.648a.82.82,0,0,0-.219-.03H6.892A4.116,4.116,0,0,0,2.781,7.729V21.735a.822.822,0,0,0,1.645,0V12.087H34.069a.822.822,0,1,0,0-1.645H4.426V7.729A2.47,2.47,0,0,1,6.892,5.262h3.276a.824.824,0,0,0,.219-.03V6.29a2.467,2.467,0,0,0,4.934,0V5.262H29.135V6.29a2.467,2.467,0,0,0,4.934,0V5.262h3.919a2.47,2.47,0,0,1,2.467,2.467V38.975a1.481,1.481,0,1,1-2.961,0V36.848a.822.822,0,0,0-.822-.822H27.107a.822.822,0,1,0,0,1.645H35.85v1.3a3.106,3.106,0,0,0,.374,1.481H3.125a1.482,1.482,0,0,1-1.48-1.48V37.67h18.4a.822.822,0,1,0,0-1.645H11.833a6.743,6.743,0,1,0-8.787,0H.822A.822.822,0,0,0,0,36.848v2.128A3.128,3.128,0,0,0,3.125,42.1h35.85A3.129,3.129,0,0,0,42.1,38.975V7.729A4.116,4.116,0,0,0,37.989,3.618ZM13.677,6.29a.822.822,0,1,1-1.645,0V2.467a.822.822,0,1,1,1.645,0Zm18.748,0a.822.822,0,1,1-1.645,0V2.467a.822.822,0,0,1,1.645,0ZM2.342,30.917a5.1,5.1,0,1,1,5.1,5.1A5.1,5.1,0,0,1,2.342,30.917Z" />
+                                    <g transform="translate(37.104 10.443)">
+                                        <path
+                                            d="M452.644,127.241a.822.822,0,1,0,.241.581A.828.828,0,0,0,452.644,127.241Z"
+                                            transform="translate(-451.24 -127)" />
+                                    </g>
+                                    <g transform="translate(23.153 36.026)">
+                                        <path d="M282.983,438.37a.823.823,0,1,0,.241.581A.827.827,0,0,0,282.983,438.37Z"
+                                            transform="translate(-281.58 -438.13)" />
+                                    </g>
+                                    <g transform="translate(15.479 24.997)">
+                                        <path
+                                            d="M191.37,304a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,191.37,304Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,191.37,308.6Z"
+                                            transform="translate(-188.245 -304)" />
+                                    </g>
+                                    <g transform="translate(23.153 24.997)">
+                                        <path
+                                            d="M284.7,304a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,284.7,304Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,284.7,308.6Z"
+                                            transform="translate(-281.578 -304)" />
+                                    </g>
+                                    <g transform="translate(30.828 24.997)">
+                                        <path
+                                            d="M378.037,304a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,378.037,304Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,378.037,308.6Z"
+                                            transform="translate(-374.912 -304)" />
+                                    </g>
+                                    <g transform="translate(7.804 16.445)">
+                                        <path
+                                            d="M98.037,200a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,98.037,200Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,98.037,204.6Z"
+                                            transform="translate(-94.912 -200)" />
+                                    </g>
+                                    <g transform="translate(23.153 16.445)">
+                                        <path
+                                            d="M284.7,200a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,284.7,200Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,284.7,204.6Z"
+                                            transform="translate(-281.578 -200)" />
+                                    </g>
+                                    <g transform="translate(30.828 16.445)">
+                                        <path
+                                            d="M378.037,200a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,378.037,200Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,378.037,204.6Z"
+                                            transform="translate(-374.912 -200)" />
+                                    </g>
+                                    <g transform="translate(15.479 16.445)">
+                                        <path
+                                            d="M191.37,200a3.125,3.125,0,1,0,3.125,3.125A3.128,3.128,0,0,0,191.37,200Zm0,4.6a1.48,1.48,0,1,1,1.48-1.48A1.482,1.482,0,0,1,191.37,204.6Z"
+                                            transform="translate(-188.245 -200)" />
+                                    </g>
+                                    <g transform="translate(4.21 28.672)">
+                                        <path
+                                            d="M57.354,348.941a.822.822,0,0,0-1.163,0l-2.678,2.678L52.6,350.7a.822.822,0,0,0-1.163,1.163l1.5,1.5a.822.822,0,0,0,1.163,0l3.259-3.259A.822.822,0,0,0,57.354,348.941Z"
+                                            transform="translate(-51.194 -348.7)" />
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-sm-10 box-service p-5">
+                <app-card-service [items]="results" [selectedCategory]="selectedCategory"></app-card-service>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="position: relative;">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="box-blue wow fadeInLeft" >
+                    <div class="row">
+                        <div class="col-md-8 text-right">
+                            <h2>LOS CLIENTES<br/>HABLAN DE NOSOTROS</h2>
+                            <p class="mt-5">
+                                Morbi ut dictum nibh, ut tristique dolor. Pellentesque urna mauris, blandit non condimentum nec, pellentesque eget leo. Fusce bibendum, 
+                                elit vulputate commodo semper, diam nisl lobortis arcu, at condimentum sem purus vitae nulla.Sed malesuada enim faucibus varius commodo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class="preview-video wow fadeInRight" src="assets/img/services/preview_video.png">
+    </div>
+    <div class="container sustentable" >
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <img class="wow fadeInLeft img-fluid" src="assets/img/services/sustentable.png">
+            </div>
+            <div class="col-md-5 offset-md-1 wow fadeInRight text">
+                <h2>SOMOS UNA EMPRESA<br/>RESPONSABLE</h2>
+                <p class="mt-5">
+                    Hoy en día Unisan presta una amplia variedad de servicios en el rubro, con una mirada a largo plazo enfocada al manejo y 
+                    gestión responsable de residuos acorde a lo establecido por la ley y preocupados por el medio ambiente ofreciendo 
+                    soluciones orientadas a fomentar la conciencia del reciclaje.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container recycle mt-5" >
+        <div class="row">
+            <div class="col-md-6 text text-right wow fadeInLeft">
+                <h2>DUIS TINCIDUNT JUSTO</h2>
+                <p class="mt-5">
+                    Nulla auctor felis volutpat tortor suscipit sollicitudin. Quisque et nulla et ipsum condimentum rutrum In a est velit.
+                     Ut facilisis eu nunc et mattis. Praesent tristique congue placerat. Sed auctor risus risus, luctus
+                </p>
+                <p class="mt-5">
+                    Nulla auctor felis volutpat tortor suscipit sollicitudin. Quisque et nulla et ipsum condimentum rutrum In a est velit. 
+                    Ut facilisis eu nunc et mattis. Praesent tristique congue placerat. Sed auctor risus risus, luctus
+                </p>
+            </div>
+            <div class="col-md-6 wow fadeInRight overflow-hidden">
+                <img class="img-fluid" src="assets/img/services/recycle.png">
+                
+            </div>
+        </div>
+    </div>
+</section>

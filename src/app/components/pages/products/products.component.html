@@ -1,0 +1,63 @@
+<section id="header-product">
+    <div class="header-container">
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-2 col-md-8">
+                    <div class="box-search">
+                        <select [(ngModel)]="category" (change)='search()'>
+                            <option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
+                        </select>
+                        <span class="separator-vertical">|</span>
+                        <i class="bi bi-search"></i>
+                        <input type="text" placeholder="Buscar Productos" (keyup.enter)="onEnter()" [(ngModel)]="query">
+                        <span class="separator-vertical">|</span>
+                        <i class="bi bi-sliders"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container" *ngIf="salients.length>0">
+    <div class="box-salient">
+        <h2 class="text-center mt-4">PRODUCTOS DESTACADOS</h2>
+        <div class="row carousel-cards">
+            <div id="carouselSalient" class="carousel slide" [ngClass]="{'carousel': salients.length > 3 }" data-ride="carousel">
+                <div class="carousel-inner row w-100 mx-auto">
+                    <ng-container *ngFor="let item of salients; let i=index;">
+                        <div class="carousel-item col-md-4 mb-4" [ngClass]="{'active': i == 0 }">
+                            <app-card-product [item]="item" ></app-card-product>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="salients.length > 3">
+            <div class="wow fadeInLeft">
+                <button class="btn-carrousel btn rounded-circle btn-outline-primary mr-2" onclick="$('#carouselSalient').carousel('prev')">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="btn-carrousel btn rounded-circle btn-primary" onclick="$('#carouselSalient').carousel('next')">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <div class="text-center wow fadeInRight">
+                <a role="button" class="btn rounded-pill btn-primary pl-5 pr-5 p-2 " routerLink="/productos/destacados">Ver destacatados</a>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="result" class="mt-5">
+    <div class="container">
+        <div class="row" *ngIf="results.length > 0">
+            <ng-container *ngFor="let item of results; let i=index;">
+                <div class="col-md-4 col-lg-3 mb-4 wow fadeInUp">
+                    <app-card-product [item]="item"></app-card-product>
+                </div>
+            </ng-container>
+        </div>
+        <div class="text-center" *ngIf="results.length == 0">
+            <p>No se econtraron resultados</p>
+        </div>
+    </div>
+</section>

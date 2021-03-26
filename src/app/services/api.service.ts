@@ -4,6 +4,7 @@ import { environment } from "src/environments/environment";
 import { map } from "rxjs/operators";
 import { Product } from '../models/product.model';
 import { LoginService } from './db/login.service';
+import { PopupService } from './db/popup.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,15 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private loginService:LoginService,
+    private popupService:PopupService,
     ) { 
-    console.log("Service api ready");
+    
   }
 
-  searchProduct(query: string) {
+  searchProduct(query: string,category:any) {
     return this.http
       .get(
-        `${environment.baseUrl}${environment.apiUrl}products?search%5Bvalue%5D=${query}&start=${this.offset}&length=${this.limit}&sort=${this.sort}&direction=${this.direction}`
+        `${environment.baseUrl}${environment.apiUrl}products?search%5Bvalue%5D=${query}&start=${this.offset}&length=${this.limit}&sort=${this.sort}&direction=${this.direction}&category=${category.id}`
       )
       .pipe(
         map((data:any) => {
@@ -45,10 +47,58 @@ export class ApiService {
       );
   }
 
+  productsSalient() {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}products_salients`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+  
+  services(query: string) {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}services?search%5Bvalue%5D=${query}&start=${this.offset}&length=100&sort=${this.sort}&direction=${this.direction}`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+  
+  getCategories() {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}categories?search%5Bvalue%5D=&start=${this.offset}&length=100&sort=${this.sort}&direction=${this.direction}`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+
   getProduct(productId: any){
     return this.http
       .get(
         `${environment.baseUrl}${environment.apiUrl}products/${productId}`
+      )
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
+  }
+
+  getService(serviceId: any){
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}services/${serviceId}`
       )
       .pipe(
         map((data) => {
@@ -64,6 +114,22 @@ export class ApiService {
     });
   }
   
+  checkCustomer(email: string) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}customers_check`, {
+      email: email
+    });
+  }
+
+  saveCustomer(email: string) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}customers`, {
+      email: email
+    });
+  }
+
+  editCustomer(customer: any) {
+    return this.http.put(`${environment.baseUrl}${environment.apiUrl}customers/${customer.id}`, customer);
+  }
+  
   getOrder(orderId: any){
     return this.http
       .get(
@@ -76,12 +142,22 @@ export class ApiService {
       );
   }
   
-  sendOrder(cartService: { total: any; list: any; }) {
+  sendOrder(cartService: { total: any; list: any; },customer:any) {
     return this.http.post(`${environment.baseUrl}${environment.apiUrl}orders`, {
       channel: "WEB",
       total: cartService.total,
-      customer: this.loginService.user.id,
+      customer: customer.id,
       items: cartService.list,
+    });
+  }
+
+  sendRequest(data: { clientName: string; clientEmail: string; clientPhone: string; observation:string, service: string | null; }) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}cotizations`, data);
+  }
+
+  visit() {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}visits`, {
+      
     });
   }
 
@@ -94,6 +170,18 @@ export class ApiService {
         map((data) => {
           return data;
         })
+      );
+  }
+  
+  getPopup() {
+    return this.http
+      .get(`${environment.baseUrl}${environment.apiUrl}popups_active`, {})
+      .subscribe(
+        (data) => {
+          this.popupService.saveStorage(data);
+        },
+        (error) => {},
+        () => {}
       );
   }
 

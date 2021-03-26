@@ -1,41 +1,278 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Carrito</li>
-    </ol>
-</nav>
-<div class="table-responsive" *ngIf="cartService.list.length > 0">
-    <table class="table table-striped" >
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Producto</th>
-                <th scope="col" class="text-right">Precio</th>
-                <th scope="col" class="text-center">Cantidad</th>
-                <th scope="col" class="text-right">Subtotal</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of cartService.list; let i=index;">
-                <th scope="row">{{ i + 1}}</th>
-                <td>{{ item.name }}</td>
-                <td class="text-right">{{ item.currency.symbol }} {{ item.price | number:'1.2-2' }}</td>
-                <td class="text-center">{{ item.quantity }}</td>
-                <td class="text-right">{{ item.currency.symbol }} {{ (item.quantity * item.price) | number:'1.2-2' }}</td>
-                <td class="text-center"><i class="fa fa-trash-alt text-warning cursor-pointer" (click)="cartService.delete(item)"></i></td>
-            </tr>
-            <tr>
-                <th scope="col" colspan="4" class="text-right">TOTAL: </th>
-                <th scope="col" class="text-right">$ {{ cartService.total | number:'1.2-2'}}</th>
-                <th scope="col" class="text-center"><i class="fa fa-trash text-danger cursor-pointer" (click)="cartService.clear()"></i></th>
-            </tr>
-        </tbody>
-    </table>
-    <div class="text-right">
-        <a role="button" routerLink="/pago" class="btn btn-success"><i clasS="fa fa-check"></i> Confirmar pedido</a>
+<div class="mb-5 spacer-header"></div>
+<div class="container">
+    <div class="breadcrumb-custom">
+        <p>
+            <a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a>
+        </p>
+        <p>
+            <span>Tienda online | Carrito</span>
+        </p>
     </div>
 </div>
-<div class="alert alert-warning" *ngIf="cartService.list.length == 0">
-    No tiene productos en su carrito.
+<div class="container">
+    <div class="container-fluid" id="grad1">
+        <div class="row justify-content-center mt-0">
+            <div class="col-11 col-md-12 col-lg-9 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2><strong>Carrito de compras</strong></h2>
+                    <div class="col-lg-12">
+                        <p>Complete los campos y haga click en continuar para completar el proceso de compra</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <form id="msform">
+                                <!-- progressbar -->
+                                <ul id="progressbar">
+                                    <li [ngClass]="{'active':step == 1 }" id="account" (click)="goToStep(1)">
+                                        <strong>Carrito</strong></li>
+                                    <li [ngClass]="{'active':step == 2 }" id="personal" (click)="goToStep(2)">
+                                        <strong>Datos personales</strong></li>
+                                    <li [ngClass]="{'active':step == 3 }" id="delivery" (click)="goToStep(3)">
+                                        <strong>Domicilio</strong></li>
+                                    <li [ngClass]="{'active':step == 4 }" id="payment" (click)="goToStep(4)">
+                                        <strong>Pago</strong></li>
+                                </ul> <!-- fieldsets -->
+                                <fieldset *ngIf="step == 1">
+                                    <div class="form-card">
+                                        <div class="table-responsive" *ngIf="cartService.list.length > 0">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Producto</th>
+                                                        <th scope="col" class="text-right">Precio</th>
+                                                        <th scope="col" class="text-center">Cantidad</th>
+                                                        <th scope="col" class="text-right">Subtotal</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let item of cartService.list; let i=index;">
+                                                        <th scope="row">{{ i + 1}}</th>
+                                                        <td>{{ item.name }}</td>
+                                                        <td class="text-right">{{ item.currency.symbol }}
+                                                            {{ item.price | number:'1.2-2' }}</td>
+                                                        <td class="text-center">{{ item.quantity }}</td>
+                                                        <td class="text-right">{{ item.currency.symbol }}
+                                                            {{ (item.quantity * item.price) | number:'1.2-2' }}</td>
+                                                        <td class="text-center"><i
+                                                                class="fa fa-trash-alt text-warning cursor-pointer"
+                                                                (click)="cartService.delete(item)"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="col" colspan="4" class="text-right">TOTAL: </th>
+                                                        <th scope="col" class="text-right">$
+                                                            {{ cartService.total | number:'1.2-2'}}</th>
+                                                        <th scope="col" class="text-center"><i
+                                                                class="fa fa-trash text-danger cursor-pointer"
+                                                                (click)="cartService.clear()"></i></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <hr>
+                                            <div class="text-right">
+                                                <a role="button" (click)="nextStep()" class="btn btn-info">Continuar</a>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-warning" *ngIf="cartService.list.length == 0">
+                                            No tiene productos en su carrito.
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset *ngIf="step == 2">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Datos personales</h2>
+                                        <p>Por favor ingrese su email para o inicie sesion con alguna de las redes
+                                            sociales.</p>
+                                        <form autocomplete="off" (ngSubmit)="save(step2)" #step2="ngForm">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="email"
+                                                            [class.is-invalid]="step2_email.invalid && step2_email.touched"
+                                                            [(ngModel)]="form.step2.email" name="email"
+                                                            #step2_email="ngModel" required minlength="5"
+                                                            placeholder="E-mail"
+                                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                                        <small *ngIf="step2_email.invalid && step2_email.touched"
+                                                            class="form-text text-danger">Ingrese un correo
+                                                            válido</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 text-center" style="padding-top: 0;">
+                                                    <a href=""><i class="bi-facebook" style="font-size:1.5rem;"></i></a>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a href=""><i class="bi-google text-danger"
+                                                            style="font-size:1.5rem;"></i></a>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-6 text-left">
+                                                    <a role="button" (click)="previusStep()"
+                                                        class="btn btn-info">Volver</a>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <button type="submit" class="btn btn-info">Continuar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </fieldset>
+                                <fieldset *ngIf="step == 3">
+                                    <form autocomplete="off" (ngSubmit)="save(step3)" #step3="ngForm">
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Domicilio</h2>
+                                            <p>Por favor ingrese sus datos personales para realizar la entrega</p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Nombre completo</label>
+                                                        <input class="form-control"
+                                                            [class.is-invalid]="step3_name.invalid && step3_name.touched"
+                                                            #step3_name="ngModel" required [(ngModel)]="form.step3.name"
+                                                            name="step3_name">
+                                                        <small *ngIf="step3_name.invalid && step3_name.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Teléfono</label>
+                                                        <input class="form-control"
+                                                            [class.is-invalid]="step3_phone.invalid && step3_phone.touched"
+                                                            #step3_phone="ngModel" required
+                                                            [(ngModel)]="form.step3.phone" name="phone">
+                                                        <small *ngIf="step3_phone.invalid && step3_phone.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Ciudad</label>
+                                                        <input class="form-control"
+                                                            [class.is-invalid]="step3_city.invalid && step3_city.touched"
+                                                            #step3_city="ngModel" required [(ngModel)]="form.step3.city"
+                                                            name="city">
+                                                        <small *ngIf="step3_city.invalid && step3_city.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Dirección</label>
+                                                        <input class="form-control"
+                                                            [class.is-invalid]="step3_address.invalid && step3_address.touched"
+                                                            #step3_address="ngModel" required
+                                                            [(ngModel)]="form.step3.address" name="address">
+                                                        <small *ngIf="step3_address.invalid && step3_address.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <p>Puedes ingresar una contraseña para acceder luego a toda tu información
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Contraseña</label>
+                                                        <input class="form-control" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Repita contraseña</label>
+                                                        <input class="form-control" type="password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-6 text-left">
+                                                    <a role="button" (click)="previusStep()"
+                                                        class="btn btn-info">Volver</a>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <button type="submit" class="btn btn-info">Continuar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </fieldset>
+                                <fieldset *ngIf="step == 4">
+                                    <form autocomplete="off" (ngSubmit)="save(step3)" #step3="ngForm">
+                                        <div class="form-card">
+                                            <div class="col-md-8 offset-md-2">
+                                                <h2 class="fs-title">Pago</h2>
+                                                <p>Ingrese los datos de su tarjeta de crédito</p>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12 form-group">
+                                                        <label>Titular de la tarjeta</label>
+                                                        <input type="text" placeholder="Juan Perez" class="form-control"
+                                                            [class.is-invalid]="step4_name.invalid && step4_name.touched"
+                                                            #step4_name="ngModel" required [(ngModel)]="form.step4.name"
+                                                            name="step4_name">
+                                                        <small *ngIf="step4_name.invalid && step4_name.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                    <div class="col-sm-12 form-group">
+                                                        <label>Número de la tarjeta</label>
+                                                        <input type="text" placeholder="1234-1234-1234-1234"
+                                                            class="form-control"
+                                                            [class.is-invalid]="step4_number.invalid && step4_number.touched"
+                                                            #step4_number="ngModel" required
+                                                            [(ngModel)]="form.step4.number" name="step4_number">
+                                                        <small *ngIf="step4_number.invalid && step4_number.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Vencimiento</label>
+                                                        <input type="text" placeholder="06/22" class="form-control"
+                                                            [class.is-invalid]="step4_date.invalid && step4_date.touched"
+                                                            #step4_date="ngModel" required [(ngModel)]="form.step4.date"
+                                                            name="ste4_date">
+                                                        <small *ngIf="step4_date.invalid && step4_date.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Código</label>
+                                                        <input type="text" placeholder="123" class="form-control"
+                                                            [class.is-invalid]="step4_code.invalid && step4_code.touched"
+                                                            #step4_code="ngModel" required [(ngModel)]="form.step4.code"
+                                                            name="step4_code">
+                                                        <small *ngIf="step4_code.invalid && step4_code.touched"
+                                                            class="form-text text-danger">Este campo es
+                                                            obligatorio</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-6 text-left">
+                                                    <a role="button" (click)="previusStep()"
+                                                        class="btn btn-info">Volver</a>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <button type="submit" class="btn btn-info">Continuar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

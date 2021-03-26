@@ -20,6 +20,19 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderComponent } from './components/order/order.component';
 import { LoginComponent } from './components/login/login.component';
+import { ServicesComponent } from './components/services/services.component';
+import { CardServiceComponent } from './components/utils/card-service/card-service.component';
+import { CotizationComponent } from './components/cotization/cotization.component';
+import { FooterComponent } from './components/utils/footer/footer.component';
+import { ContactComponent } from './components/utils/contact/contact.component';
+import { BoxProductSalientComponent } from './components/utils/box-product-salient/box-product-salient.component';
+import { AboutusComponent } from './components/utils/aboutus/aboutus.component';
+import { CallToActionComponent } from './components/utils/call-to-action/call-to-action.component';
+import { ServiceComponent } from './components/utils/service/service.component';
+import { ProductsComponent } from './components/pages/products/products.component';
+import { SalientsComponent } from './components/pages/salients/salients.component';
+// import { NlbrPipe } from './pipes/nlbr.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +45,19 @@ import { LoginComponent } from './components/login/login.component';
     CheckoutComponent,
     OrdersComponent,
     OrderComponent,
-    LoginComponent
+    LoginComponent,
+    ServicesComponent,
+    CardServiceComponent,
+    CotizationComponent,
+    FooterComponent,
+    ContactComponent,
+    BoxProductSalientComponent,
+    AboutusComponent,
+    CallToActionComponent,
+    ServiceComponent,
+    ProductsComponent,
+    SalientsComponent,
+    // NlbrPipe
   ],
   entryComponents:[
     ModalProductComponent
@@ -46,6 +71,7 @@ import { LoginComponent } from './components/login/login.component';
     NgbModule,
     FormsModule
   ],
+  // exports: [ NlbrPipe ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]

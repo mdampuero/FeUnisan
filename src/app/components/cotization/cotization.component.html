@@ -1,0 +1,41 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
+        <li class="breadcrumb-item"><a routerLink="/servicios">Servicios</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Solicitar cotización</li>
+    </ol>
+</nav>
+<app-card-service *ngIf="data" [item]="data" [button]="false"></app-card-service>
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Solicite cotización</h5>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label>Nombre completo *</label>
+                        <input type="text" [(ngModel)]="name" placeholder="Juan Perez" class="form-control"> 
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Email *</label>
+                        <input type="text" [(ngModel)]="email" placeholder="usuario@dominio.com" class="form-control"> 
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Teléfono *</label>
+                        <input type="text" [(ngModel)]="phone" placeholder="111111111" class="form-control"> 
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label>Observaciones</label>
+                        <textarea [(ngModel)]="observation" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success" (click)="request()">Enviar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>

@@ -1,11 +1,13 @@
-<div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-3" *ngFor="let item of items; let i=index;">
-        <div class="card cursor-pointer" (click)="goToProduct(item.id)">
-            <img src="https://picsum.photos/200?random={{ i }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ item.name }}</h5>
-                <h4 class="text-info font-weight-bold">{{ item.currency.symbol }} {{ item.price }}</h4>
-            </div>
+<div class="card-service cursor-pointer" (click)="goToProduct(item.id)">
+    <div class="img" *ngIf="item.picture" style="background-image: url('{{ environment.baseUrl }}uploads/sm/{{ item.picture }}');"></div>
+    <div class="img" *ngIf="!item.picture" style="background-image: url('https://picsum.photos/seed/{{ item.id }}/260');"></div>
+    <div class="caption">
+        <h4>{{ item.name }}</h4>
+        <hr>
+        <p class="mb-0">{{ item.description }}</p>
+        <h4 class="mt-2">{{ item.currency.symbol }} {{ item.price }}</h4>
+        <div class="text-center">
+            <button class="btn rounded-pill btn-primary btn-sm pl-3 pr-3">Ver producto</button>
         </div>
     </div>
 </div>

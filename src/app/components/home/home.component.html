@@ -1,6 +1,19 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Inicio</li>
-    </ol>
-</nav>
-<app-card-product [items]="results"></app-card-product>
+<section id="hero">
+    <div class="hero-container">
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6 text-left">
+                <h1>Bienvenidos<br />a Unisan</h1>
+                <h2>Somos especialistas en servicios sanitarios <br>y soluciones industriales</h2>
+                <a href="#services" title="Solicitar servicio" class="btn-get-started rounded-pill btn-primary">Solicitar Servicio</a>
+            </div>
+        </div>
+    </div>
+</section>
+<app-box-product-salient></app-box-product-salient>
+<main id="main">
+    <app-aboutus></app-aboutus>
+    <app-call-to-action></app-call-to-action>
+    <app-service></app-service>
+    <app-contact></app-contact>
+</main>

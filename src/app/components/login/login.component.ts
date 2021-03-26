@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/db/login.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { PopupService } from 'src/app/services/db/popup.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private apiService:ApiService,
     private loginService:LoginService,
+    private popupService:PopupService,
     private spinner: NgxSpinnerService,
     private router: Router,
     public toastService: ToastService
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    console.log(this.popupService.getBySection('609e30c7-6aee-11eb-80e9-0242ac130002'));
   }
 
   login(){

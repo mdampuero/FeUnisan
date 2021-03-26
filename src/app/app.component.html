@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
-<div class="container pt-4">  
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <app-toasts></app-toasts>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "line-scale" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="line-scale" [fullScreen]="true">
+	<p style="color: white">Cargando... </p>
+</ngx-spinner>
