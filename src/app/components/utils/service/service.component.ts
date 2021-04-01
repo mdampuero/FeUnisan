@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -10,6 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ServiceComponent implements OnInit {
   results: any[] = [];
+  categories: any[] = [];
   selectedCategory='INDUSTRY';
   constructor(
     private apiService:ApiService,
@@ -27,6 +28,18 @@ export class ServiceComponent implements OnInit {
     this.apiService.services("").subscribe(
       (data:any) => {
         this.results=data["data"];
+      },
+      (error) => {
+        console.error(error);
+      },
+      () => {
+        this.spinner.hide();
+      }
+    );
+    this.apiService.getCategoriesService().subscribe(
+      (data:any) => {
+        this.categories=data["data"];
+        console.log(this.categories);
       },
       (error) => {
         console.error(error);

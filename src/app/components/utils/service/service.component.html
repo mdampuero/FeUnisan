@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2 text-center">
-                <div class="icon-svg active wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='INDUSTRY'}" data-wow-delay="0.2s" (click)="selectCategory('INDUSTRY')">
+                <div class="icon-svg wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='INDUSTRY'}" data-wow-delay="0.2s" (click)="selectCategory('INDUSTRY')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
                         <text class="txt-svg" transform="translate(0 67.479)">
                             <tspan x="9.655" y="18">INDUSTRIA</tspan>
@@ -139,6 +139,16 @@
                 </div>
             </div>
             <div class="col-sm-10 box-service p-5">
+                <div class="tabs-filter">
+                    <ng-container  *ngFor="let category of categories; let i=index;">
+                        <ul *ngIf="selectedCategory==category.id">
+                            <ng-container  *ngFor="let subcategory of category.subcategories; let j=index;">
+                                <li *ngIf="!subcategory.isDelete">{{ subcategory.name }}</li>
+                            </ng-container>
+                        </ul>
+                    </ng-container>
+                </div>
+                <div class="clearfix"></div>
                 <app-card-service [items]="results" [selectedCategory]="selectedCategory"></app-card-service>
             </div>
         </div>
@@ -191,7 +201,6 @@
             </div>
             <div class="col-md-6 wow fadeInRight overflow-hidden">
                 <img class="img-fluid" src="assets/img/services/recycle.png">
-                
             </div>
         </div>
     </div>

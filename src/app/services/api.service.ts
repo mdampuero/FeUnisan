@@ -82,6 +82,18 @@ export class ApiService {
         })
       );
   }
+  
+  getCategoriesService() {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}service_categories?search%5Bvalue%5D=&start=${this.offset}&length=100&sort=${this.sort}&direction=${this.direction}`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
 
   getProduct(productId: any){
     return this.http

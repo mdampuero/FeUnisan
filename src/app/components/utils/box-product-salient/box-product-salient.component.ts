@@ -21,7 +21,6 @@ export class BoxProductSalientComponent implements OnInit {
     this.apiService.productsSalient().subscribe(
       (data:any) => {
         this.salients = data;
-        console.log(this.salients);
       },
       (error) => {
         console.error(error);

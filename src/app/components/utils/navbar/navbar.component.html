@@ -37,9 +37,16 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a href="#services">Para el hogar</a></li>
-          <li><a href="#services">Para la industria</a></li>
-          <li><a href="#services">Para Eventos</a></li>
+          <ng-container  *ngFor="let category of categories; let i=index;">
+            <li>
+              <a href="#services">{{ category.label }}</a>
+              <ul *ngIf="category.subcategories.length > 0">
+                <ng-container  *ngFor="let subcategory of category.subcategories; let j=index;">
+                  <li *ngIf="subcategory.isDelete == false"><a href="#services">{{ subcategory.name }}</a></li>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-container>
           <li routerLinkActive="menu-active"><a routerLink="productos">Tiendo Online</a></li>
           <li class="icon">
             <a routerLink="carrito" class="p-0">
