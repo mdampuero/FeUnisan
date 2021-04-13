@@ -12,6 +12,7 @@ export class CardServiceComponent implements OnInit {
 
   @Input() items: any;
   @Input() selectedCategory: any;
+  @Input() selectedSubcategory: any;
   @Input() button: boolean=true;
   public environment:any=environment;
   constructor(private modalService: NgbModal,private router: Router) { 

@@ -1,0 +1,59 @@
+<div class="spacer-header" style="height: 90px;"></div>
+<div class="container">
+    <div class="account">
+        <div class="row">
+            <div class="col-md-3 menu p-4 pb-5">
+                <app-menu></app-menu>
+            </div>
+            <div class="col-md-9 action p-4">
+                <div class="breadcrumb-custom">
+                    <p>
+                        <span><a href="javascript:window.history.go(-1);">Mis pedidos</a> | #{{id}}</span>
+                    </p>
+                </div>
+                <hr>
+                <div class="box-detail p-5" *ngIf="ready">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Id Pedido</label>
+                            <p>#{{id}}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Total</label>
+                            <p><b>$ {{ results.totals[0].total | number:'1.2-2' }}</b></p>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Estado</label>
+                            <p><span class="badge badge-{{ results.status.color }}">{{ results.status.name }}</span></p>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Fecha</label>
+                            <p>{{ results.createdAt | date:'dd/MM/yyyy' }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <table class="table mt-4 table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col" class="text-right">Precio</th>
+                                <th scope="col" class="text-center">Cantidad</th>
+                                <th scope="col" class="text-right">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of results.items; let i=index;">
+                                <th scope="row">{{ i + 1}}</th>
+                                <td>{{ item.product.name }}</td>
+                                <td class="text-right">{{ item.product.currency.symbol }} {{ item.price | number:'1.2-2' }}</td>
+                                <td class="text-center">{{ item.quantity }}</td>
+                                <td class="text-right">{{ item.product.currency.symbol }} {{ item.subtotal | number:'1.2-2' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

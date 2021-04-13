@@ -303,18 +303,18 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 30px;
 }
 
-.sf-arrows .sf-with-ul:after {
+/* .sf-arrows .sf-with-ul:after {
   content: "\f107";
   position: absolute;
   right: 15px;
-  /* font-family: FontAwesome; */
+  font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
 }
 
 .sf-arrows ul .sf-with-ul:after {
   content: "\f105";
-}
+} */
 
 /* Nav Meu Container */
 #nav-menu-container {
@@ -1367,4 +1367,78 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 .clearfix{
   clear: both;
+}
+.checkout h2{
+  font-weight: 700;
+  text-transform: uppercase;
+  color:black;
+}
+.checkout .table td{
+  color: #6C6D70;
+  vertical-align: middle;
+}
+.checkout .table td img {
+  width: 100px;
+  margin-right: 15px;
+}
+.checkout .table .total{
+  color: #3874B6;
+}
+.checkout .table .total h4{
+  font-weight: 700;
+}
+.checkout h3{
+  color:black;
+}
+.checkout p,.checkout label{
+  color:black;
+}
+.checkout label{
+  font-size: 0.9rem;
+}
+.btn-primary{
+  border: none !important;
+}
+.swal2-styled.swal2-confirm {
+  border: 0;
+  border-radius: .25em;
+  background: initial;
+  color: #fff;
+  background-color: #24BEBC !important;
+  border-color: #24BEBC !important;
+  border-radius: 50rem!important;
+  padding: 1rem 2rem;
+}
+
+.account .menu{
+  background-color: #3874B6;
+  color: white;
+}
+.account .menu .list-group-item{
+  background: transparent;
+  border: none;
+}
+
+.account .menu .list-group-item a{
+  border-left: #3874B6 solid 3px;
+  color:white;
+}
+.account .menu .list-group-item a.active, .account .menu .list-group-item a:hover{
+  border-left: #FFF solid 3px;
+}
+.account .table{
+  font-size: 0.8rem;
+}
+.account .box-detail{
+  font-size: 0.8rem;
+  background-color: #E8EAF3;
+}
+.account .box-detail label{
+  font-weight: 700;
+  color: black;
+}
+.box-login{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 12px;
 }

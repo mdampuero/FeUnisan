@@ -7,7 +7,8 @@ export class LoginService {
   public user = {
     id: null,
     name: null,
-    email: null
+    email: null,
+    document: null,
   };
   constructor() {
     this.loadStorage();
@@ -28,7 +29,8 @@ export class LoginService {
     this.user = {
       id: null,
       name: null,
-      email: null
+      email: null,
+      document: null,
     };
     this.saveStorage();
   }

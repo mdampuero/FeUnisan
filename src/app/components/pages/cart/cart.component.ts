@@ -6,11 +6,11 @@ import { CartService } from 'src/app/services/db/cart.service';
 import { LoginService } from 'src/app/services/db/login.service';
 import { PopupService } from 'src/app/services/db/popup.service';
 import { ToastService } from 'src/app/services/toast.service';
-import { ModalProductComponent } from '../utils/modal-product/modal-product.component';
+import { ModalProductComponent } from '../../utils/modal-product/modal-product.component';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/services/api.service';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html'
@@ -18,13 +18,14 @@ import { ApiService } from 'src/app/services/api.service';
 export class CartComponent implements OnInit {
   public step = 1;
   public customer:any;
+  public environment:any=environment;
   public form:any={
     step2:{
       email:''
     },
     step3:{
       name:'',
-      phone:'',
+      document:'',
       city:'',
       address:''
     },
@@ -127,7 +128,7 @@ export class CartComponent implements OnInit {
   editCustomer(){
     this.spinner.show();
     this.customer.name=this.form.step3.name;
-    this.customer.phone=this.form.step3.phone;
+    this.customer.document=this.form.step3.document;
     this.customer.address=this.form.step3.address;
     this.customer.city=this.form.step3.city;
     this.apiService.editCustomer(this.customer).subscribe(
@@ -148,7 +149,7 @@ export class CartComponent implements OnInit {
     this.customer=data;
     this.step++;
     this.form.step3.name=this.customer.name;
-    this.form.step3.phone=this.customer.phone;
+    this.form.step3.document=this.customer.document;
     this.form.step3.address=this.customer.address;
     this.form.step3.city=this.customer.city;
   }

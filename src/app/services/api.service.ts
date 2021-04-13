@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { map } from "rxjs/operators";
 import { Product } from '../models/product.model';
@@ -51,6 +51,19 @@ export class ApiService {
     return this.http
       .get(
         `${environment.baseUrl}${environment.apiUrl}products_salients`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+
+  convenios(query:any) {
+    return this.http
+      .post(
+        `${environment.baseUrl}${environment.apiUrl}convenios`,
+        { query }
       )
       .pipe(
         map((data:any) => {
@@ -119,9 +132,9 @@ export class ApiService {
       );
   }
 
-  login(username: string, password: string) {
+  login(rut: string, password: string) {
     return this.http.post(`${environment.baseUrl}${environment.apiUrl}login`, {
-      username: username,
+      username: rut,
       password: password,
     });
   }

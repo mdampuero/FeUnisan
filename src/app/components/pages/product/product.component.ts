@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/db/cart.service';
-import { ToastService } from './../../services/toast.service';
+import { ToastService } from '../../../services/toast.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from "src/environments/environment";
 

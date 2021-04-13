@@ -139,17 +139,18 @@
                 </div>
             </div>
             <div class="col-sm-10 box-service p-5">
-                <div class="tabs-filter">
-                    <ng-container  *ngFor="let category of categories; let i=index;">
+                <ng-container  *ngFor="let category of categories; let i=index;">
+                    <div class="tabs-filter" *ngIf="category.subcategories.length > 0">
                         <ul *ngIf="selectedCategory==category.id">
                             <ng-container  *ngFor="let subcategory of category.subcategories; let j=index;">
-                                <li *ngIf="!subcategory.isDelete">{{ subcategory.name }}</li>
+                                <li (click)="selectSubcategory('ALL')" [ngClass]="{'active' : selectedSubcategory=='ALL'}" *ngIf="j==0">Todas</li>
+                                <li (click)="selectSubcategory(subcategory.id)" [ngClass]="{'active' : selectedSubcategory==subcategory.id}" *ngIf="!subcategory.isDelete">{{ subcategory.name }}</li>
                             </ng-container>
                         </ul>
-                    </ng-container>
-                </div>
+                    </div>
+                </ng-container>
                 <div class="clearfix"></div>
-                <app-card-service [items]="results" [selectedCategory]="selectedCategory"></app-card-service>
+                <app-card-service [items]="results" [selectedCategory]="selectedCategory" [selectedSubcategory]="selectedSubcategory"></app-card-service>
             </div>
         </div>
     </div>

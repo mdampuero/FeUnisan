@@ -3,8 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProductComponent } from './components/product/product.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { ProductComponent } from './components/pages/product/product.component';
 import { NavbarComponent } from './components/utils/navbar/navbar.component';
 
 import { HttpClientModule} from '@angular/common/http';
@@ -14,12 +14,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/utils/toast/toast.component';
 import { ModalProductComponent } from './components/utils/modal-product/modal-product.component';
 import { FormsModule } from '@angular/forms';
-import { CartComponent } from './components/cart/cart.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CartComponent } from './components/pages/cart/cart.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { OrdersComponent } from './components/orders/orders.component';
-import { OrderComponent } from './components/order/order.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/pages/login/login.component';
 import { ServicesComponent } from './components/services/services.component';
 import { CardServiceComponent } from './components/utils/card-service/card-service.component';
 import { CotizationComponent } from './components/cotization/cotization.component';
@@ -31,6 +28,13 @@ import { CallToActionComponent } from './components/utils/call-to-action/call-to
 import { ServiceComponent } from './components/utils/service/service.component';
 import { ProductsComponent } from './components/pages/products/products.component';
 import { SalientsComponent } from './components/pages/salients/salients.component';
+import { AccountComponent } from './components/pages/account/account.component';
+import { MenuComponent } from './components/utils/menu/menu.component';
+import { AccountCardsComponent } from './components/utils/account-cards/account-cards.component';
+import { AccountConveniosComponent } from './components/pages/account-convenios/account-convenios.component';
+import { AccountConveniosViewComponent } from './components/pages/account-convenios-view/account-convenios-view.component';
+import { AccountOrdersComponent } from './components/pages/account-orders/account-orders.component';
+import { AccountOrdersViewComponent } from './components/pages/account-orders-view/account-orders-view.component';
 // import { NlbrPipe } from './pipes/nlbr.pipe';
 
 @NgModule({
@@ -42,9 +46,6 @@ import { SalientsComponent } from './components/pages/salients/salients.componen
     CardProductComponent,
     ToastComponent,
     CartComponent,
-    CheckoutComponent,
-    OrdersComponent,
-    OrderComponent,
     LoginComponent,
     ServicesComponent,
     CardServiceComponent,
@@ -57,6 +58,13 @@ import { SalientsComponent } from './components/pages/salients/salients.componen
     ServiceComponent,
     ProductsComponent,
     SalientsComponent,
+    AccountComponent,
+    MenuComponent,
+    AccountCardsComponent,
+    AccountConveniosComponent,
+    AccountConveniosViewComponent,
+    AccountOrdersComponent,
+    AccountOrdersViewComponent,
     // NlbrPipe
   ],
   entryComponents:[

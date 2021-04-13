@@ -1,6 +1,9 @@
 <div class="row">
     <ng-container  *ngFor="let item of items; let i=index;">
-        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="selectedCategory==item.category.id">
+        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="
+        (selectedCategory==item.category.id && selectedSubcategory == 'ALL')
+        || (selectedCategory==item.category.id && item.subcategory && selectedSubcategory==item.subcategory.id)
+        " >
             <div class="card-service cursor-pointer">
                 <!-- <div class="img" style="background-image: url('{{ environment.baseUrl }}uploads/sm/{{ item.picture }}');"></div> -->
                 <div class="img" style="background-image: url('https://picsum.photos/seed/{{ item.id }}/260');"></div>

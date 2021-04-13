@@ -1,0 +1,46 @@
+<div class="spacer-header" style="height: 90px;"></div>
+<div class="container">
+    <div class="account">
+        <div class="row">
+            <div class="col-md-3 menu p-4 pb-5">
+                <app-menu></app-menu>
+            </div>
+            <div class="col-md-9 action p-4">
+                <table class="table mt-4 table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Convenio</th>
+                            <th scope="col" class="text-center">Activo</th>
+                            <th scope="col" class="text-center">Terminado</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr (click)="goToDetail(item.IdConvenio)" *ngFor="let item of results; let i=index;" class="cursor-pointer">
+                            <td>
+                                <b>
+                                    {{ item.IdConvenio }}
+                                </b>
+                            </td>
+                            <td>
+                                {{ item.Convenio }}
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="item.Activo=='1'" class="badge badge-success">SI</span>
+                                <span *ngIf="item.Activo=='0'" class="badge badge-danger">NO</span>
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="item.Terminado=='1'" class="badge badge-success">SI</span>
+                                <span *ngIf="item.Terminado=='0'" class="badge badge-danger">NO</span>
+                            </td>                            
+                            <td>
+                                {{ item.FechaInicioServecio | date:'dd/MM/yyyy' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

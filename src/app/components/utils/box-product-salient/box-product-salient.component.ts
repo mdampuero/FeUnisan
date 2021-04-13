@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
@@ -11,12 +12,15 @@ import { environment } from 'src/environments/environment';
 export class BoxProductSalientComponent implements OnInit {
   salients: any[] = [];
   public environment:any=environment;
-  constructor(private apiService:ApiService,) { }
+  constructor(private apiService:ApiService,private router: Router) { }
 
   ngOnInit(): void {
     this.getSalients();
   }
 
+  goToProduct(id:String){
+    this.router.navigate(['producto/'+id]);
+  }
   getSalients(){
     this.apiService.productsSalient().subscribe(
       (data:any) => {

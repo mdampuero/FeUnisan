@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/services/api.service';
@@ -11,8 +12,23 @@ import { PopupService } from 'src/app/services/db/popup.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  public email:any='';
+  public rut:any='';
   public password:any='';
+ 
+  public form:any={
+    login:{
+      email:''
+    },
+    step3:{
+      name:'',
+      document:'',
+      city:'',
+      address:''
+    },
+    step4:{
+
+    }
+  }
   constructor(
     private apiService:ApiService,
     private loginService:LoginService,
@@ -30,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.spinner.show();
-    this.apiService.login(this.email,this.password).subscribe(
+    this.apiService.login(this.rut,this.password).subscribe(
       (data:any) => {
         this.spinner.hide();
         this.loginService.login(data);
@@ -38,7 +54,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         this.spinner.hide();
-        this.toastService.show('Email o contraseña incorrectos', {
+        this.toastService.show('Rut o contraseña incorrectos', {
           classname: 'bg-danger text-light',
           delay: 3000 ,
           autohide: true,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalProductComponent } from '../utils/modal-product/modal-product.component';
+import { ModalProductComponent } from '../../utils/modal-product/modal-product.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupService } from 'src/app/services/db/popup.service';
 

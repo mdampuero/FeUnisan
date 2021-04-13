@@ -5,10 +5,15 @@ import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/db/login.service';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
+  selector: 'app-account-orders-view',
+  templateUrl: './account-orders-view.component.html',
+  styles: [
+  ]
 })
-export class OrderComponent implements OnInit {
+export class AccountOrdersViewComponent implements OnInit {
+  id:any;
+  results: any;
+  ready:boolean=false;
   public data:any={ items:[]}
   constructor(
     private loginService:LoginService,
@@ -20,15 +25,17 @@ export class OrderComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.id=this.route.snapshot.paramMap.get("id");
     this.spinner.show();
-    this.apiService.getOrder(this.route.snapshot.paramMap.get("id")).subscribe(
+    this.apiService.getOrder(this.id).subscribe(
       (data:any) => {
-        this.data=data;
+        this.results=data;
       },
       (error) => {
         console.error(error);
       },
       () => {
+        this.ready=true;
         this.spinner.hide();
       }
     );

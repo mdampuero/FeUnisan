@@ -5,10 +5,13 @@ import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/db/login.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html'
+  selector: 'app-account-orders',
+  templateUrl: './account-orders.component.html',
+  styles: [
+  ]
 })
-export class OrdersComponent implements OnInit {
+export class AccountOrdersComponent implements OnInit {
+
   public results: any[] = [];
   constructor(
     private apiService:ApiService,
@@ -33,8 +36,8 @@ export class OrdersComponent implements OnInit {
     );
   }
 
-  goToOrder(id:Number){
-    this.router.navigate(['mispedidos/'+id]);
+  goToDetail(id:Number){
+    this.router.navigate(['pedidos/'+id]);
   }
 
 }

@@ -1,0 +1,131 @@
+<div class="spacer-header" style="height: 90px;"></div>
+<div class="container">
+    <div class="account">
+        <div class="row">
+            <div class="col-md-3 menu p-4 pb-5">
+                <app-menu></app-menu>
+            </div>
+            <div class="col-md-9 action p-4">
+                <div class="breadcrumb-custom">
+                    <p>
+                        <span><a href="javascript:window.history.go(-1);">Mis convenios</a> | #{{id}}</span>
+                    </p>
+                </div>
+                <hr>
+                <div class="box-detail p-5" *ngIf="ready">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Id Convenio</label>
+                            <p>#{{id}}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label>Convenio</label>
+                            <p>{{ results.Convenio }}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Activo</label>
+                            <p>
+                                <span *ngIf="results.Activo=='1'" class="badge badge-success">SI</span>
+                                <span *ngIf="results.Activo=='0'" class="badge badge-danger">NO</span>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Fecha</label>
+                            <p>{{ results.FechaInicioServecio | date:'dd/MM/yyyy' }}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label>Ejecutivo</label>
+                            <p>{{ results.Ejecutivo }} (<a href="mailto:{{ results.EmailContacto }}">{{ results.EmailContacto }}</a>)</p>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Terminado</label>
+                            <p>
+                                <span *ngIf="results.Terminado=='1'" class="badge badge-success">SI</span>
+                                <span *ngIf="results.Terminado=='0'" class="badge badge-danger">NO</span>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Nº Pres.</label>
+                            <p>{{ results.NoPresupuesto }}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label>Contacto</label>
+                            <p>{{ results.Contacto }} (<a href="tel:{{ results.TelefonoContacto }}">{{ results.TelefonoContacto }}</a>)</p>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Tipo de ser.</label>
+                            <p>{{ results.TipoServicio }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Razón social</label>
+                            <p>{{ results.RazonSocial }}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label>Dirección</label>
+                            <p>{{ results.DireccionRetiro }},{{ results.ComunaRetiro }} </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Retiro</label>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Lun</th>
+                                        <th class="text-center">Mar</th>
+                                        <th class="text-center">Mie</th>
+                                        <th class="text-center">Jue</th>
+                                        <th class="text-center">Vie</th>
+                                        <th class="text-center">Sab</th>
+                                        <th class="text-center">Dom</th>
+                                        <th class="text-center">Fer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Lun == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Lun == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Mar == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Mar == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Mie == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Mie == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Jue == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Jue == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Vie == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Vie == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Sab == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Sab == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Dom == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Dom == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i *ngIf="results.Ret_Fer == '0'" class="bi bi-x-circle text-danger"></i>
+                                            <i *ngIf="results.Ret_Fer == '1'" class="bi bi-check-circle text-success"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

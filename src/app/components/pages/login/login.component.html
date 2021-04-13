@@ -1,0 +1,42 @@
+<div class="spacer-header" style="height: 90px;"></div>
+<div class="container">
+    <div class="account">
+        <div class="row py-5">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="card box-login p-4">
+                    <div class="card-body">
+                        <form autocomplete="off" (ngSubmit)="save(login)" #login="ngForm">
+                            <h4 class="card-title text-center text-dark">Login</h4>
+                            <hr>
+                            <input class="form-control rounded-pill py-4 px-4" type="email"
+                                [class.is-invalid]="login_email.invalid && login_email.touched"
+                                [(ngModel)]="form.login.email" name="email"
+                                #login_email="ngModel" required minlength="5"
+                                placeholder="E-mail"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                            <small *ngIf="login_email.invalid && login_email.touched"
+                                class="form-text text-danger">Ingrese un correo  válido</small>
+                            <!-- <div class="row py-4">
+                                <div class="col-sm-12 form-group">
+                                    <label>N° Rut</label>
+                                    <input type="test" [(ngModel)]="rut" class="form-control rounded-pill py-4 px-4">
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" [(ngModel)]="password"
+                                        class="form-control rounded-pill py-4 px-4">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn-get-started rounded-pill btn-primary px-5 py-3"
+                                    (click)="login()">Ingresar</button>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+</div>

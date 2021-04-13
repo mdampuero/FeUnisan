@@ -18,7 +18,6 @@
 // }
 
 #msform {
-    text-align: center;
     position: relative;
     margin-top: 20px
 }
@@ -145,7 +144,7 @@ select.list-dt:focus {
 #progressbar li:after {
     content: '';
     width: 100%;
-    height: 2px;
+    height: 4px;
     background: lightgray;
     position: absolute;
     left: 0;
@@ -155,7 +154,7 @@ select.list-dt:focus {
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: skyblue
+    background: #24BEBC;
 }
 
 .radio-group {

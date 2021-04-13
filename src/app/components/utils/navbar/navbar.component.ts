@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/db/cart.service';
 import { LoginService } from 'src/app/services/db/login.service';
+import { Events } from 'src/app/services/events.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
     public loginService:LoginService,
     public cartService:CartService,
     private apiService:ApiService,
+    public events: Events,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -34,6 +36,13 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.loginService.logout();
     this.router.navigate(['/login']);
+  }
+
+  goToService(service: any,subservice: any){
+    this.events.publish('service', {
+      serviceSelected: service,
+      subserviceSelected: subservice,
+    });
   }
 
   login(){
