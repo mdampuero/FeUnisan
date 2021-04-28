@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/db/cart.service';
@@ -11,6 +11,7 @@ import { Events } from 'src/app/services/events.service';
 })
 export class NavbarComponent implements OnInit {
   categories: any[] = [];
+  @Input() fixed: boolean = true;
   constructor(
     public loginService:LoginService,
     public cartService:CartService,

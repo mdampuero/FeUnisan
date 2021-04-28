@@ -1,4 +1,5 @@
-<div class="mb-5 spacer-header"></div>
+<app-navbar [fixed]=false></app-navbar>
+<div class="mb-5"></div>
 <div class="container">
     <div class="breadcrumb-custom">
         <p>
@@ -12,7 +13,7 @@
 <div class="container">
     <div class="product_view">
         <div class="row" *ngIf="ready">
-            <div class="col-md-6">
+            <div class="col-md-6 py-4 px-5">
                 <img *ngIf="data.picture" src="{{ environment.baseUrl }}uploads/lg/{{ data.picture }}" class="w-100"
                     alt="{{ data.name }}">
                 <!-- <img *ngIf="!data.picture" src="../assets/no-foto.png" class="w-100" alt="{{ data.name }}"> -->
@@ -44,7 +45,6 @@
                         <span *ngIf="itemCart">Actualizar</span>
                     </button>
                 </div>
-                
             </div>
         </div>
     </div>

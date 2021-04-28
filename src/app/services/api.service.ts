@@ -132,10 +132,32 @@ export class ApiService {
       );
   }
 
-  login(rut: string, password: string) {
+  login(form: any) {
     return this.http.post(`${environment.baseUrl}${environment.apiUrl}login`, {
-      username: rut,
-      password: password,
+      username: form.email,
+      password: form.password
+    });
+  }
+  
+  forgotPassword(form: any) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}forgot_password`, {
+      email: form.email,
+      resetUrl: environment.url+'/blanquearMiContrasena'
+    });
+  }
+
+  checkCode(id: String | null,code: String | null) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}check_code`, {
+      id:id,
+      code:code
+    });
+  }
+  
+  resetPassword(form: any,id: String | null,code: String | null) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}reset_password`, {
+      password: form.password1,
+      id:id,
+      code:code
     });
   }
   
@@ -152,6 +174,7 @@ export class ApiService {
   }
 
   editCustomer(customer: any) {
+    console.log(customer);
     return this.http.put(`${environment.baseUrl}${environment.apiUrl}customers/${customer.id}`, customer);
   }
   

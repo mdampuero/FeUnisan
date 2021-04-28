@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseUrl: 'http://dev.unisan.cl/',
-  apiUrl: 'app_dev.php/api/'
+  apiUrl: 'app_dev.php/api/',
+  url: 'http://localhost:4200'
 };
 
 /*

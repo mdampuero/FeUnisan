@@ -1,40 +1,11 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="inicio">UNISAN</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="inicio">Inicio</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="servicios">Servicios</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="carrito">Carrito</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="mispedidos">Mis pedidos</a>
-        </li>
-        <li class="nav-item">
-            <a *ngIf="loginService.user.id" class="nav-link cursor-pointer" (click)="logout()">Salir</a>
-            <a *ngIf="!loginService.user.id" class="nav-link cursor-pointer" (click)="login()">Ingresar</a>
-        </li>
-      </ul>
-    </div>
-  </nav> -->
 <!--==========================
   Header
   ============================-->
-  <header id="header">
+  <header id="header" [ngClass]="{'no-fixed': !fixed, 'fixed':fixed }">
     <div class="container">
-
       <div id="logo" class="pull-left">
         <a routerLink=""><img src="assets/img/MarcaUnisan.png" alt="" title="" /></a>
       </div>
-
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <ng-container  *ngFor="let category of categories; let i=index;">
@@ -47,15 +18,15 @@
               </ul>
             </li>
           </ng-container>
-          <li routerLinkActive="menu-active"><a routerLink="productos">Tiendo Online</a></li>
+          <li routerLinkActive="menu-active"><a routerLink="/productos">Tiendo Online</a></li>
           <li class="icon">
-            <a routerLink="pedidos" class="p-0">
+            <a routerLink="/pedidos" class="p-0">
               <span class="total-badge"><i class="bi bi-person" style="font-size: inherit;"></i></span>
               Mi perfil
             </a>
           </li>
           <li class="icon">
-            <a routerLink="carrito" class="p-0">
+            <a routerLink="/carrito" class="p-0">
               <span class="total-badge">{{ cartService.list.length }}</span>
               <span class="total">
                 $ {{ cartService.total | number:'1.2-2' }}
@@ -63,26 +34,7 @@
               <i class="bi bi-cart2"></i>
             </a>
           </li>
-          <!-- <li><a href="#team">Team</a></li>
-          <li class="menu-has-children"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact Us</a></li> -->
         </ul>
-      </nav><!-- #nav-menu-container -->
+      </nav>
     </div>
-  </header><!-- #header -->
+  </header>

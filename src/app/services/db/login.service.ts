@@ -8,6 +8,10 @@ export class LoginService {
     id: null,
     name: null,
     email: null,
+    phone: null,
+    provence: null,
+    city: null,
+    address: null,
     document: null,
   };
   constructor() {
@@ -30,6 +34,10 @@ export class LoginService {
       id: null,
       name: null,
       email: null,
+      phone: null,
+      provence: null,
+      city: null,
+      address: null,
       document: null,
     };
     this.saveStorage();

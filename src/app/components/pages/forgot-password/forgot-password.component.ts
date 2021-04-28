@@ -8,15 +8,14 @@ import { ToastService } from 'src/app/services/toast.service';
 import { PopupService } from 'src/app/services/db/popup.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html'
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html'
 })
-export class LoginComponent implements OnInit {
-  public login_failed=false;
+export class ForgotPasswordComponent implements OnInit {
+  public forgot_failed=false;
   public form:any={
-    login:{
-      email:'',
-      password:''
+    forgot:{
+      email:''
     }
   }
   constructor(
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public toastService: ToastService
     ) { 
-      if(this.loginService.user.id) this.router.navigate(['/inicio']);
+      
     }
 
   ngOnInit(): void {
@@ -41,23 +40,27 @@ export class LoginComponent implements OnInit {
       });
       return;
     }else{
-      this.login();
+      this.sendEmail();
       return;
     }
   }
 
-  login(){
-    this.login_failed=false;
+  sendEmail(){
+    this.forgot_failed=false;
     this.spinner.show();
-    this.apiService.login(this.form.login).subscribe(
+    this.apiService.forgotPassword(this.form.forgot).subscribe(
       (data:any) => {
         this.spinner.hide();
-        this.loginService.login(data);
-        this.router.navigate(['']);
+        this.toastService.show('Se envió a tu Email los pasos a seguir para blanquear tu contraseña', {
+          classname: 'bg-success text-light',
+          delay: 5000 ,
+          autohide: true,
+        });
+        this.router.navigate(['/login']);
       },
       (error) => {
         this.spinner.hide();
-        this.login_failed=true;
+        this.forgot_failed=true;
       },
       () => {
         this.spinner.hide();

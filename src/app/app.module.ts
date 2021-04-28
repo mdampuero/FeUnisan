@@ -17,9 +17,9 @@ import { FormsModule } from '@angular/forms';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './components/pages/login/login.component';
-import { ServicesComponent } from './components/services/services.component';
+import { ServicesComponent } from './components/pages/services/services.component';
 import { CardServiceComponent } from './components/utils/card-service/card-service.component';
-import { CotizationComponent } from './components/cotization/cotization.component';
+import { CotizationComponent } from './components/pages/cotization/cotization.component';
 import { FooterComponent } from './components/utils/footer/footer.component';
 import { ContactComponent } from './components/utils/contact/contact.component';
 import { BoxProductSalientComponent } from './components/utils/box-product-salient/box-product-salient.component';
@@ -35,6 +35,10 @@ import { AccountConveniosComponent } from './components/pages/account-convenios/
 import { AccountConveniosViewComponent } from './components/pages/account-convenios-view/account-convenios-view.component';
 import { AccountOrdersComponent } from './components/pages/account-orders/account-orders.component';
 import { AccountOrdersViewComponent } from './components/pages/account-orders-view/account-orders-view.component';
+import { ForgotPasswordComponent } from './components/pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { ServiceDetailComponent } from './components/pages/service-detail/service-detail.component';
+import { CardServiceUnitComponent } from './components/utils/card-service-unit/card-service-unit.component';
 // import { NlbrPipe } from './pipes/nlbr.pipe';
 
 @NgModule({
@@ -65,6 +69,10 @@ import { AccountOrdersViewComponent } from './components/pages/account-orders-vi
     AccountConveniosViewComponent,
     AccountOrdersComponent,
     AccountOrdersViewComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    ServiceDetailComponent,
+    CardServiceUnitComponent,
     // NlbrPipe
   ],
   entryComponents:[

@@ -1,4 +1,4 @@
-<div class="spacer-header" style="height: 90px;"></div>
+<app-navbar [fixed]=false></app-navbar>
 <div class="container">
     <div class="account">
         <div class="row">
@@ -6,21 +6,84 @@
                 <app-menu></app-menu>
             </div>
             <div class="col-md-9 action p-4">
-                <app-account-cards></app-account-cards>
-                <table class="table mt-4">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-left">Producto</th>
-                            <th scope="col" class="text-center">Precio</th>
-                            <th scope="col" class="text-center">Cantidad</th>
-                            <th scope="col" class="text-center">Subtotal</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
+                <div class="breadcrumb-custom">
+                    <p>
+                        <span>Mis datos</span>
+                    </p>
+                </div>
+                <hr>
+                <div class="box-detail p-5">
+                    <form  (ngSubmit)="save(account)" #account="ngForm">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Nombre</label>
+                            <input class="form-control rounded-pill py-4 px-4" type="text"
+                                    [class.is-invalid]="account_name.invalid && account_name.touched"
+                                    [(ngModel)]="form.account.name" name="name"
+                                    #account_name="ngModel" required minlength="2">
+                                <small *ngIf="account_name.invalid && account_name.touched"
+                                    class="form-text text-danger">Ingrese un Nombre válido</small>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-Mail</label>
+                            <input class="form-control rounded-pill py-4 px-4" type="text"
+                                    [class.is-invalid]="account_email.invalid && account_email.touched"
+                                    [(ngModel)]="form.account.email" name="email"
+                                    #account_email="ngModel" required minlength="5"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                <small *ngIf="account_email.invalid && account_email.touched"
+                                    class="form-text text-danger">Ingrese un email válido</small>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>RUT</label>
+                            <input class="form-control rounded-pill py-4 px-4" type="text"
+                                    [class.is-invalid]="account_document.invalid && account_document.touched"
+                                    [(ngModel)]="form.account.document" name="document"
+                                    #account_document="ngModel" required minlength="5">
+                                <small *ngIf="account_document.invalid && account_document.touched"
+                                    class="form-text text-danger">Ingrese un RUT válido</small>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Fono</label>
+                            <input class="form-control rounded-pill py-4 px-4" type="text"
+                                    [class.is-invalid]="account_phone.invalid && account_phone.touched"
+                                    [(ngModel)]="form.account.phone" name="phone"
+                                    #account_phone="ngModel">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Región</label>
+                            <input class="form-control rounded-pill py-4 px-4" type="text"
+                                    [class.is-invalid]="account_provence.invalid && account_provence.touched"
+                                    [(ngModel)]="form.account.provence" name="provence"
+                                    #account_provence="ngModel">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Ciudad</label>
+                            <input class="form-control rounded-pill py-4 px-4" type="text"
+                                    [class.is-invalid]="account_city.invalid && account_city.touched"
+                                    [(ngModel)]="form.account.city" name="city"
+                                    #account_city="ngModel">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Dirección</label>
+                            <textarea class="form-control py-4 px-4" 
+                                    [class.is-invalid]="account_address.invalid && account_address.touched"
+                                    [(ngModel)]="form.account.address" name="address"
+                                    #account_address="ngModel"></textarea>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-right">
+                        <p>
+                            <small *ngIf="account_failed" class="form-text text-danger">{{ account_failed }}</small>
+                        </p>
+                        <button class="btn-get-started rounded-pill btn-primary px-5 py-3" >Actualizar datos</button>
+                    </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

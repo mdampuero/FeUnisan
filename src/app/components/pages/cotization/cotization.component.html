@@ -1,0 +1,80 @@
+<app-navbar [fixed]=false></app-navbar>
+<div class="mb-5"></div>
+<div class="container">
+    <div class="breadcrumb-custom">
+        <p>
+            <a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a>
+        </p>
+        <p *ngIf="ready">
+            <span><a routerLink="/servicios"> Unidades sanitarias </a> | <a routerLink="/servicios/{{ data.id }}"> {{ data.name }} </a> | Formulario de cotización</span>
+        </p>
+    </div>
+</div>
+<div class="container">
+<div class="card">
+    <div class="card-body">
+        <form  (ngSubmit)="save(cotization)" #cotization="ngForm">
+            <h4 class="card-title text-center text-dark">Formulario de cotización</h4>
+            <hr>
+            <div class="row py-4">
+                <div class="col-sm-12 form-group">
+                    <label>Servicio</label> 
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [(ngModel)]="form.cotization.serviceName" name="serviceName" disabled="disabled"
+                        #cotization_serviceName="ngModel" required minlength="5">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Nombre Completo</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_clientName.invalid && cotization_clientName.touched"
+                        [(ngModel)]="form.cotization.clientName" name="clientName"
+                        #cotization_clientName="ngModel" required minlength="5">
+                    <small *ngIf="cotization_clientName.invalid && cotization_clientName.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>E-Mail</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_clientEmail.invalid && cotization_clientEmail.touched"
+                        [(ngModel)]="form.cotization.clientEmail" name="clientEmail"
+                        #cotization_clientEmail="ngModel" required minlength="5" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <small *ngIf="cotization_clientEmail.invalid && cotization_clientEmail.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Fono</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_clientPhone.invalid && cotization_clientPhone.touched"
+                        [(ngModel)]="form.cotization.clientPhone" name="clientPhone"
+                        #cotization_clientPhone="ngModel" required minlength="5">
+                    <small *ngIf="cotization_clientPhone.invalid && cotization_clientPhone.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Ciudad</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_clientCity.invalid && cotization_clientCity.touched"
+                        [(ngModel)]="form.cotization.clientCity" name="clientCity"
+                        #cotization_clientCity="ngModel" required minlength="5">
+                    <small *ngIf="cotization_clientCity.invalid && cotization_clientCity.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label>Dirección</label>
+                    <textarea class="form-control rounded-pill py-4 px-4" 
+                        [(ngModel)]="form.cotization.clientAddress" name="clientAddress"
+                        #cotization_clientAddress="ngModel" ></textarea>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label>Observaciones</label>
+                    <textarea class="form-control rounded-pill py-4 px-4" 
+                        [(ngModel)]="form.cotization.observation" name="observation"
+                        #cotization_observation="ngModel" ></textarea>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>
+                    <small *ngIf="cotization_failed" class="form-text text-danger">Ocurrió un error, por favor revise el formulario</small>
+                </p>
+                <button class="btn-get-started rounded-pill btn-primary px-5 py-3" >Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
