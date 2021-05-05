@@ -11,13 +11,19 @@ import { environment } from "src/environments/environment";
 export class ServiceDetailComponent implements OnInit {
   public item:any;
   public ready:boolean = false;
+  public categorySelected:any;
+  public modelId:any;
   public environment:any=environment;
   constructor(
     private route: ActivatedRoute,
     private api:ApiService,
     private router: Router,
     private spinner: NgxSpinnerService
-  ) { }
+  ) {
+    this.modelId=this.route.snapshot.paramMap.get("key");
+    this.categorySelected=this.route.snapshot.paramMap.get("category");
+    console.log(this.categorySelected);
+   }
 
   goToCotization(id:any){
     this.router.navigate(['solicitarCotizacion/'+id]);
@@ -25,7 +31,7 @@ export class ServiceDetailComponent implements OnInit {
   
   ngOnInit(): void {
     this.spinner.show();
-    this.api.getService(this.route.snapshot.paramMap.get("key")).subscribe(
+    this.api.getModel(this.modelId).subscribe(
       (data:any) => {
         this.item=data;
         this.spinner.hide();

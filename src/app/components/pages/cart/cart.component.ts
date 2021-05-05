@@ -45,16 +45,9 @@ export class CartComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.checkPopup();
+    
   }
 
-  checkPopup(){
-    let popup=this.popupService.getBySection('CART');
-    if(popup){
-      const modalRef = this.modalService.open(ModalProductComponent,{size: 'lg'});
-      modalRef.componentInstance.data = popup
-    }
-  }
 
   nextStep(){
     this.step++;

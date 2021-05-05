@@ -3,20 +3,21 @@ import { Router } from '@angular/router';
 import { environment } from "src/environments/environment";
 
 @Component({
-  selector: 'app-card-service-unit',
-  templateUrl: './card-service-unit.component.html'
+  selector: 'app-card-model-unit',
+  templateUrl: './card-model-unit.component.html'
 })
-export class CardServiceUnitComponent implements OnInit {
+export class CardModelUnitComponent implements OnInit {
+
   @Input() item: any;
-  @Input() selectedCategory: any;
+  @Input() categorySelected: any;
   public environment:any=environment;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  goToService(id:any){
-    this.router.navigate(['servicios/'+this.selectedCategory+'/'+id]);
+  goToModel(id:any){
+    this.router.navigate(['servicio/'+this.categorySelected+'/'+id]);
   }
-  
+
 }

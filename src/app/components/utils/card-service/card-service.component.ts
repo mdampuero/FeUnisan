@@ -23,7 +23,7 @@ export class CardServiceComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    
+    console.log(this.items);
   }
 
 }

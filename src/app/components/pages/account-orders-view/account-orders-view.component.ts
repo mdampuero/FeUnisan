@@ -15,6 +15,9 @@ export class AccountOrdersViewComponent implements OnInit {
   results: any;
   ready:boolean=false;
   public data:any={ items:[]}
+  public filter:any={
+    status:''
+  }
   constructor(
     private loginService:LoginService,
     private router: Router,

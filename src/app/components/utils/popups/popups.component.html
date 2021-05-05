@@ -1,0 +1,35 @@
+<button type="button" id="btn-modal"  #myDiv class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" *ngIf="popup.notes.length > 0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div id="carouselModal" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <ng-container  *ngFor="let item of popup.notes; let i=index;" >
+            <div class="carousel-item" [ngClass]="{'active': i == 0 }" *ngIf="item.isDelete == false">
+              <div class="card h-100">
+                <img src="{{ item.picture }}" class="card-img-top w-100 bg-dark" alt="...">
+                <div class="card-body">
+                  <h2 class="card-title text-uppercase bold-700 my-3">{{ item.name }}</h2>
+                  <p class="card-text">{{ item.description }}</p>
+                </div>
+              </div>
+            </div>
+            </ng-container>
+          </div>
+          <div class="p-4" *ngIf="popup.notes.length > 1">
+            <button class="btn-carrousel btn rounded-circle btn-outline-primary mr-2" onclick="javascript:$('#carouselModal').carousel('prev')">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="btn-carrousel btn rounded-circle btn-primary" onclick="javascript:$('#carouselModal').carousel('next')">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

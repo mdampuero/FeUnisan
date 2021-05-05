@@ -10,10 +10,14 @@ import { Events } from "src/app/services/events.service";
   ]
 })
 export class ServiceComponent implements OnInit {
-  results: any[] = [];
+  results: any = {
+    forHome:[],
+    forIndustry:[],
+    forEvent:[]
+  };
   categories: any[] = [];
   selectedCategoryDefault: any = {};
-  selectedCategory='INDUSTRY';
+  selectedCategory='forIndustry';
   selectedSubcategory='ALL';
   constructor(
     private apiService:ApiService,
@@ -36,9 +40,12 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show();
-    this.apiService.services("").subscribe(
+    this.apiService.models("").subscribe(
       (data:any) => {
-        this.results=data["data"];
+        this.results.forHome=data.forHome;
+        this.results.forIndustry=data.forIndustry;
+        this.results.forEvent=data.forEvent;
+        console.log(this.results);
       },
       (error) => {
         console.error(error);
@@ -47,21 +54,21 @@ export class ServiceComponent implements OnInit {
         this.spinner.hide();
       }
     );
-    this.apiService.getCategoriesService().subscribe(
-      (data:any) => {
-        this.categories=data["data"];
-        // this.selectedCategoryDefault = this.categories.filter((category) => category.id == this.selectedCategory)[0];
-        // if(this.selectedCategoryDefault['subcategories'].length > 0)
-        //   this.selectedSubcategory=this.selectedCategoryDefault['subcategories'][0].id;
+    // this.apiService.getCategoriesService().subscribe(
+    //   (data:any) => {
+    //    /// this.categories=data["data"];
+    //     // this.selectedCategoryDefault = this.categories.filter((category) => category.id == this.selectedCategory)[0];
+    //     // if(this.selectedCategoryDefault['subcategories'].length > 0)
+    //     //   this.selectedSubcategory=this.selectedCategoryDefault['subcategories'][0].id;
         
-      },
-      (error) => {
-        console.error(error);
-      },
-      () => {
-        this.spinner.hide();
-      }
-    );
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   },
+    //   () => {
+    //     this.spinner.hide();
+    //   }
+    // );
   }
 
 }

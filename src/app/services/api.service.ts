@@ -84,6 +84,18 @@ export class ApiService {
       );
   }
   
+  models(query: string) {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}modelsByGroup`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+  
   getCategories() {
     return this.http
       .get(
@@ -124,6 +136,29 @@ export class ApiService {
     return this.http
       .get(
         `${environment.baseUrl}${environment.apiUrl}services/${serviceId}`
+      )
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
+  }
+  getModel(id: any){
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}models/${id}`
+      )
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
+  }
+  
+  servicesGetById(serviceId: any,category:any){
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}servicesByCategory/${serviceId}/${category}`
       )
       .pipe(
         map((data) => {
@@ -209,10 +244,10 @@ export class ApiService {
     });
   }
 
-  getOrders() {
+  getOrders(status:any,id:any) {
     return this.http
       .get(
-        `${environment.baseUrl}${environment.apiUrl}customers/${this.loginService.user.id}/orders?start=${this.offset}&length=${this.limit}`
+        `${environment.baseUrl}${environment.apiUrl}customers/${this.loginService.user.id}/orders?start=${this.offset}&length=${this.limit}&status=${status}&id=${id}`
       )
       .pipe(
         map((data) => {

@@ -2,11 +2,13 @@
 <div class="mb-5"></div>
 <div class="container">
     <div class="breadcrumb-custom">
-        <p>
-            <a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a>
-        </p>
-        <p *ngIf="ready">
-            <span><a routerLink="/servicios"> Unidades sanitarias </a> | {{ item.name }}</span>
+        <p><a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a></p>
+        <p *ngIf=ready>
+            <span *ngIf="categorySelected=='forIndustry'">Para la Industria | </span>  
+            <span *ngIf="categorySelected=='forHome'">Para Hogar | </span> 
+            <span *ngIf="categorySelected=='forEvent'">Para Eventos | </span>  
+            <span><a routerLink="/servicios/{{ categorySelected }}/{{ item.service.id }}">{{ item.service.name }}</a> | </span>
+            <span>{{ item.name }}</span>
         </p>
     </div>
 </div>
@@ -14,16 +16,28 @@
     <div class="product_view">
         <div class="row" *ngIf="ready">
             <div class="col-md-6 py-4 px-5">
-                <img *ngIf="item.picture" src="{{ environment.baseUrl }}uploads/lg/{{ item.picture }}" class="w-100"
-                    alt="{{ item.name }}">
-                <!-- <img *ngIf="!item.picture" src="../assets/no-foto.png" class="w-100" alt="{{ item.name }}"> -->
-                <img *ngIf="!item.picture" src="https://picsum.photos/seed/{{ item.id }}/500" class="w-100"
-                    alt="{{ item.name }}">
+                <img *ngIf="item.picture" src="{{ environment.baseUrl }}uploads/lg/{{ item.picture }}" class="w-100" alt="{{ item.name }}">
+                <img *ngIf="!item.picture" src="../assets/no-foto.png" class="w-100" alt="{{ item.name }}">
+                <!-- <img *ngIf="!item.picture" src="https://picsum.photos/seed/{{ item.id }}/500" class="w-100" alt="{{ item.name }}"> -->
             </div>
             <div class="col-md-6 description">
                 <h3>{{ item.name }}</h3>
                 <hr class="blue mt-4 mb-4">
-                <p>DESCRIPCION<br />{{ item.description}}</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>DESCRIPCION</h5>
+                        <p>{{ item.description}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>CONDICIONES</h5>
+                        <p>{{ item.description}}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>ESPECIFICACIÓN</h5>
+                        <p>{{ item.description}}</p>
+                    </div>
+                </div>
+                
                 <hr>
                 <div class="text-center my-5">
                     <button class="btn rounded-pill btn-primary p-4" (click)="goToCotization(item.id)">
@@ -34,3 +48,4 @@
         </div>
     </div>
 </div>
+<app-popups [section]="'SERVICES-DETAIL'"></app-popups>

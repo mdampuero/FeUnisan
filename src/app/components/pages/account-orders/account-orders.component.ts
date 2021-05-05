@@ -11,7 +11,18 @@ import { LoginService } from 'src/app/services/db/login.service';
   ]
 })
 export class AccountOrdersComponent implements OnInit {
-
+  public status:any[]=[
+    { id: '', name:'' },
+    { id: 'ENTERED', name:'Ingresado' },
+    { id: 'IN_PROCCESS', name:'En proceso' },
+    { id: 'DELIVERED', name:'Entregado' },
+    { id: 'INVOICED', name:'Facturado' },
+    { id: 'CANCELLED', name:'Cancelado' }
+  ];
+  public filter:any={
+    status:'',
+    id:''
+  }
   public results: any[] = [];
   constructor(
     private apiService:ApiService,
@@ -22,8 +33,12 @@ export class AccountOrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getOrders();
+  }
+
+  getOrders(){
     this.spinner.show();
-    this.apiService.getOrders().subscribe(
+    this.apiService.getOrders(this.filter.status,this.filter.id).subscribe(
       (data:any) => {
         this.results = data["data"];
       },
@@ -35,6 +50,7 @@ export class AccountOrdersComponent implements OnInit {
       }
     );
   }
+
 
   goToDetail(id:Number){
     this.router.navigate(['pedidos/'+id]);

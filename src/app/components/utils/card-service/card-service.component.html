@@ -1,10 +1,11 @@
 <div class="row">
-    <ng-container  *ngFor="let item of items; let i=index;">
-        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="
+    <ng-container  *ngFor="let item of items ; let i=index;">
+        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" >
+        <!-- <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="
         (selectedCategory==item.category.id && selectedSubcategory == 'ALL')
         || (selectedCategory==item.category.id && item.subcategory && selectedSubcategory==item.subcategory.id)
-        " >
-            <app-card-service-unit [item]=item></app-card-service-unit>
+        " > -->
+            <app-card-service-unit [item]=item [selectedCategory]=selectedCategory></app-card-service-unit>
         </div>
     </ng-container>
 </div>

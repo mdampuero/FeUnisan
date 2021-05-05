@@ -39,6 +39,10 @@ import { ForgotPasswordComponent } from './components/pages/forgot-password/forg
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { ServiceDetailComponent } from './components/pages/service-detail/service-detail.component';
 import { CardServiceUnitComponent } from './components/utils/card-service-unit/card-service-unit.component';
+import { CarouselComponent } from './components/utils/carousel/carousel.component';
+import { PopupsComponent } from './components/utils/popups/popups.component';
+import { NoResultsComponent } from './components/utils/no-results/no-results.component';
+import { CardModelUnitComponent } from './components/utils/card-model-unit/card-model-unit.component';
 // import { NlbrPipe } from './pipes/nlbr.pipe';
 
 @NgModule({
@@ -73,6 +77,10 @@ import { CardServiceUnitComponent } from './components/utils/card-service-unit/c
     ResetPasswordComponent,
     ServiceDetailComponent,
     CardServiceUnitComponent,
+    CarouselComponent,
+    PopupsComponent,
+    NoResultsComponent,
+    CardModelUnitComponent,
     // NlbrPipe
   ],
   entryComponents:[

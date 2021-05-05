@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { PopupService } from 'src/app/services/db/popup.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalProductComponent } from '../../utils/modal-product/modal-product.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-services',
@@ -12,23 +10,27 @@ import { Router } from '@angular/router';
 })
 export class ServicesComponent implements OnInit {
   results: any[] = [];
-  total = 0;
+  service: any = {};
+  public environment:any=environment;
+  public categorySelected:any;
+  public serviceId:any;
+
   constructor(
-    private popupService:PopupService,
-    private modalService: NgbModal,
+    private route: ActivatedRoute,
     private apiService:ApiService,
     private router: Router,
     private spinner: NgxSpinnerService) {
-      
+      this.serviceId=this.route.snapshot.paramMap.get("key");
+      this.categorySelected=this.route.snapshot.paramMap.get("category");
     }
 
     ngOnInit(): void {
-      this.checkPopup();
       this.spinner.show();
-      this.apiService.services("").subscribe(
+      this.apiService.servicesGetById(this.serviceId,this.categorySelected).subscribe(
         (data:any) => {
           this.spinner.hide();
-          this.results=data["data"];
+          this.service=data["service"];
+          this.results=data["models"];
         },
         (error) => {
           this.spinner.hide();
@@ -38,16 +40,4 @@ export class ServicesComponent implements OnInit {
         }
       );
     }
-
-  checkPopup(){
-    let popup=this.popupService.getBySection('SERVICES');
-    if(popup){
-      const modalRef = this.modalService.open(ModalProductComponent,{size: 'lg'});
-      modalRef.componentInstance.data = popup
-    }
-  }
-
-  goToService(id:any){
-    this.router.navigate(['servicios/'+id]);
-  }
 }

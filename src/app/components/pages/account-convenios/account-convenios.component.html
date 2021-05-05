@@ -6,7 +6,26 @@
                 <app-menu></app-menu>
             </div>
             <div class="col-md-9 action p-4">
-                <table class="table mt-4 table-hover">
+                <div class="box-detail p-3">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>ID</label>
+                            <input class="form-control" [(ngModel)]="filter.IdConvenio">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>Activo</label>
+                            <select class="form-control" [(ngModel)]="filter.activo">
+                                <option *ngFor="let s of activo; let i=index;" value="{{ s.id }}">{{ s.name }}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>&nbsp;</label><br/>
+                            <button class="btn btn-block btn-primary" (click)="getResults()">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+                <app-no-results *ngIf="results.length == 0"></app-no-results>
+                <table class="table mt-4 table-hover" *ngIf="results.length > 0">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -44,3 +63,4 @@
         </div>
     </div>
 </div>
+<app-popups [section]="'ACCOUNT-CONVENIOS'"></app-popups>

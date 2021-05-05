@@ -1,4 +1,4 @@
-<div class="modal-header">
+<!-- <div class="modal-header">
   <h4 class="modal-title">{{ data.title }}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
@@ -6,6 +6,49 @@
 </div>
 <div class="modal-body">
   {{ data.description  }}
+</div> -->
+<div class="modal-body p-0">
+  <div id="carouselModal" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <ng-container  *ngFor="let item of data.notes; let i=index;">
+      <div class="carousel-item active">
+        <div class="card h-100">
+          <img src="https://picsum.photos/seed/fcbf2dc7-8e86-11eb-9bfd-0242ac120003/500" class="card-img-top w-100 bg-dark" alt="...">
+          <div class="card-body">
+            <h2 class="card-title text-center text-uppercase bold-700 text-dark my-3">Card title 1</h2>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+      <div class="carousel-item">
+        <div class="card h-100">
+          <img src="https://i.stack.imgur.com/yyE56.png" class="card-img-top w-100 bg-dark" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title 1</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card h-100">
+          <img src="https://i.stack.imgur.com/yyE56.png" class="card-img-top w-100 bg-dark" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title 1</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-4">
+      <button class="btn-carrousel btn rounded-circle btn-outline-primary mr-2" onclick="javascript:$('#carouselModal').carousel('prev')">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button class="btn-carrousel btn rounded-circle btn-primary" onclick="javascript:$('#carouselModal').carousel('next')">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
 </div>
 <!-- <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>

@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2 text-center">
-                <div class="icon-svg wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='INDUSTRY'}" data-wow-delay="0.2s" (click)="selectCategory('INDUSTRY')">
+                <div class="icon-svg wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='forIndustry'}" data-wow-delay="0.2s" (click)="selectCategory('forIndustry')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
                         <text class="txt-svg" transform="translate(0 67.479)">
                             <tspan x="9.655" y="18">INDUSTRIA</tspan>
@@ -42,7 +42,7 @@
                     </svg>
                 </div>
 
-                <div class="icon-svg mt-4 pt-0 wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='HOME'}" data-wow-delay="0.4s" (click)="selectCategory('HOME')">
+                <div class="icon-svg mt-4 pt-0 wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='forHome'}" data-wow-delay="0.4s" (click)="selectCategory('forHome')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
                         <g transform="translate(0 -0.179)">
                             <rect style="fill:none;" width="122" height="122" transform="translate(0 0.179)" />
@@ -71,7 +71,7 @@
                     </svg>
                 </div>
 
-                <div class="icon-svg mt-4 pt-0 wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='EVENT'}" data-wow-delay="0.6s" (click)="selectCategory('EVENT')">
+                <div class="icon-svg mt-4 pt-0 wow fadeInLeft" [ngClass]="{'active' : selectedCategory=='forEvent'}" data-wow-delay="0.6s" (click)="selectCategory('forEvent')">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
                         <g transform="translate(0 -0.359)">
@@ -139,7 +139,7 @@
                 </div>
             </div>
             <div class="col-sm-10 box-service p-5">
-                <ng-container  *ngFor="let category of categories; let i=index;">
+                <!-- <ng-container  *ngFor="let category of categories; let i=index;">
                     <div class="tabs-filter" *ngIf="category.subcategories.length > 0">
                         <ul *ngIf="selectedCategory==category.id">
                             <ng-container  *ngFor="let subcategory of category.subcategories; let j=index;">
@@ -148,9 +148,11 @@
                             </ng-container>
                         </ul>
                     </div>
-                </ng-container>
+                </ng-container> -->
                 <div class="clearfix"></div>
-                <app-card-service [items]="results" [selectedCategory]="selectedCategory" [selectedSubcategory]="selectedSubcategory"></app-card-service>
+                <app-card-service [items]="results.forHome" [selectedCategory]="selectedCategory" *ngIf="selectedCategory=='forHome'"></app-card-service>
+                <app-card-service [items]="results.forIndustry" [selectedCategory]="selectedCategory" *ngIf="selectedCategory=='forIndustry'"></app-card-service>
+                <app-card-service [items]="results.forEvent" [selectedCategory]="selectedCategory" *ngIf="selectedCategory=='forEvent'"></app-card-service>
             </div>
         </div>
     </div>

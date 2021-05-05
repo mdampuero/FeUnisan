@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalProductComponent } from '../../utils/modal-product/modal-product.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupService } from 'src/app/services/db/popup.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,20 +10,6 @@ import { PopupService } from 'src/app/services/db/popup.service';
   ]
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private popupService:PopupService,private modalService: NgbModal) {}
-
+  constructor() { }
   ngOnInit(): void {}
-
-  checkPopup(){
-    let popup=this.popupService.getBySection('HOME');
-    if(popup){
-      const modalRef = this.modalService.open(ModalProductComponent,{size: 'lg'});
-      modalRef.componentInstance.data = popup
-    }
-  }
-
-  ngAfterViewInit(): void {
-    this.checkPopup();
-  }
 }

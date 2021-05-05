@@ -10,29 +10,29 @@
     <div class="container">
         <div class="container">
             <div class="breadcrumb-custom">
+                <p><a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a></p>
                 <p>
-                    <a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a>
-                </p>
-                <p>
-                    <span>Unidades sanitarias</span>
+                    <span *ngIf="categorySelected=='forIndustry'">Para la Industria | </span>  
+                    <span *ngIf="categorySelected=='forHome'">Para Hogar | </span> 
+                    <span *ngIf="categorySelected=='forEvent'">Para Eventos | </span>  
+                    <span>{{ service.name }}</span>
                 </p>
             </div>
-            <h2 class="text-uppercase text-center text-dark bold-700">Unidades sanitarias</h2>
+            <h2 class="text-uppercase text-center text-dark bold-700 mt-4">{{ service.name }}</h2>
             <div class="row relative mb-5">
                 <div class="col-md-10">
                     <div class="box-blue mt-3 wow fadeInLeft" >
                         <div class="row">
                             <div class="col-md-8 text-right">
-                                <h2>DESCRIPCION DEL SERVICIO</h2>
+                                <h2>DESCRIPCIÓN</h2>
                                 <p class="mt-5">
-                                    Morbi ut dictum nibh, ut tristique dolor. Pellentesque urna mauris, blandit non condimentum nec, pellentesque eget leo. Fusce bibendum, 
-                                    elit vulputate commodo semper, diam nisl lobortis arcu, at condimentum sem purus vitae nulla.Sed malesuada enim faucibus varius commodo.
+                                    {{ service.description }}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <img class="img-service wow fadeInRight" src="assets/img/services/preview_video.png">
+                <img class="img-service wow fadeInRight" *ngIf="service.picture" src="{{ environment.baseUrl }}uploads/md/{{ service.picture }}">
             </div>
             <br/>
             <h2 class="text-uppercase text-center text-dark bold-700 my-5">Seleccione el Tipo de servicio</h2>
@@ -42,7 +42,7 @@
                         <div class="carousel-inner row w-100 mx-auto">
                             <ng-container *ngFor="let item of results; let i=index;">
                                 <div class="carousel-item col-md-4 mb-4" [ngClass]="{'active': i == 0 }">
-                                    <app-card-service-unit [item]=item></app-card-service-unit>
+                                    <app-card-model-unit [item]=item [categorySelected]=categorySelected></app-card-model-unit>
                                 </div>
                             </ng-container>
                         </div>
@@ -62,3 +62,4 @@
         </div>
     </div>
 </section>
+<app-popups [section]="'SERVICES'"></app-popups>

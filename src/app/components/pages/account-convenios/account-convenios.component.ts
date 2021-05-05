@@ -11,7 +11,15 @@ import { LoginService } from 'src/app/services/db/login.service';
   ]
 })
 export class AccountConveniosComponent implements OnInit {
-
+  public activo:any[]=[
+    { id: '', name:'' },
+    { id: '1', name:'SI' },
+    { id: '0', name:'NO' }
+  ];
+  public filter:any={
+    activo:'',
+    IdConvenio:''
+  }
   results: any[] = [];
   constructor(private apiService:ApiService,
     private loginService:LoginService,
@@ -24,7 +32,7 @@ export class AccountConveniosComponent implements OnInit {
 
   getResults(){
     this.spinner.show();
-    this.apiService.convenios({Rut:this.loginService.user.document}).subscribe(
+    this.apiService.convenios({Rut:this.loginService.user.document,Activo:this.filter.activo,IdConvenio:this.filter.IdConvenio}).subscribe(
       (data:any) => {
         this.results = data;
       },
