@@ -10,7 +10,9 @@ import { LoginService } from 'src/app/services/db/login.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public loginService:LoginService,private router: Router) { }
+  constructor(public loginService:LoginService,private router: Router) { 
+    console.log(this.loginService);
+  }
 
   ngOnInit(): void {
   }

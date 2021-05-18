@@ -27,7 +27,10 @@ export class CartComponent implements OnInit {
       name:'',
       document:'',
       city:'',
-      address:''
+      address:'',
+      provence:'',
+      phone:'',
+      role:''
     },
     step4:{
 
@@ -124,6 +127,10 @@ export class CartComponent implements OnInit {
     this.customer.document=this.form.step3.document;
     this.customer.address=this.form.step3.address;
     this.customer.city=this.form.step3.city;
+    this.customer.provence=this.form.step3.provence;
+    this.customer.phone=this.form.step3.phone;
+    this.customer.role=this.form.step3.role;
+    
     this.apiService.editCustomer(this.customer).subscribe(
       (data:any) => {
         this.spinner.hide();
@@ -145,6 +152,9 @@ export class CartComponent implements OnInit {
     this.form.step3.document=this.customer.document;
     this.form.step3.address=this.customer.address;
     this.form.step3.city=this.customer.city;
+    this.form.step3.provence=this.customer.provence;
+    this.form.step3.phone=this.customer.phone;
+    this.form.step3.role=this.customer.role;
   }
 
   pay(){

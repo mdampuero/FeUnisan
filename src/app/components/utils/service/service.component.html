@@ -149,10 +149,58 @@
                         </ul>
                     </div>
                 </ng-container> -->
+                <ng-container  *ngIf="selectedCategory=='forEvent'">
+                    <div class="tabs-filter" *ngIf="filters.forEvent.length > 0">
+                        <ul>
+                            <li (click)="selectFilter('')" [ngClass]="{'active' : selectedFilter==''}">Todos</li>
+                            <ng-container  *ngFor="let filter of filters.forEvent; let j=index;">
+                                <li (click)="selectFilter(filter.name)" [ngClass]="{'active' : selectedFilter==filter.name}">{{ filter.name }}</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+                <ng-container  *ngIf="selectedCategory=='forIndustry'">
+                    <div class="tabs-filter" *ngIf="filters.forIndustry.length > 0">
+                        <ul>
+                            <li (click)="selectFilter('')" [ngClass]="{'active' : selectedFilter==''}">Todos</li>
+                            <ng-container  *ngFor="let filter of filters.forIndustry; let j=index;">
+                                <li (click)="selectFilter(filter.name)" [ngClass]="{'active' : selectedFilter==filter.name}">{{ filter.name }}</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+                <ng-container  *ngIf="selectedCategory=='forHome'">
+                    <div class="tabs-filter" *ngIf="filters.forHome.length > 0">
+                        <ul>
+                            <li (click)="selectFilter('')" [ngClass]="{'active' : selectedFilter==''}">Todos</li>
+                            <ng-container  *ngFor="let filter of filters.forHome; let j=index;">
+                                <li (click)="selectFilter(filter.name)" [ngClass]="{'active' : selectedFilter==filter.name}">{{ filter.name }}</li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
                 <div class="clearfix"></div>
-                <app-card-service [items]="results.forHome" [selectedCategory]="selectedCategory" *ngIf="selectedCategory=='forHome'"></app-card-service>
-                <app-card-service [items]="results.forIndustry" [selectedCategory]="selectedCategory" *ngIf="selectedCategory=='forIndustry'"></app-card-service>
-                <app-card-service [items]="results.forEvent" [selectedCategory]="selectedCategory" *ngIf="selectedCategory=='forEvent'"></app-card-service>
+                <div class="row" *ngIf="selectedCategory=='forEvent'">
+                    <ng-container  *ngFor="let item of results.forEvent ; let i=index;" >
+                        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="item.display">
+                            <app-card-service-unit [item]=item [selectedCategory]=selectedCategory></app-card-service-unit>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="row" *ngIf="selectedCategory=='forHome'">
+                    <ng-container  *ngFor="let item of results.forHome ; let i=index;" >
+                        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="item.display">
+                            <app-card-service-unit [item]=item [selectedCategory]=selectedCategory></app-card-service-unit>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="row" *ngIf="selectedCategory=='forIndustry'">
+                    <ng-container  *ngFor="let item of results.forIndustry ; let i=index;" >
+                        <div class="col-md-4 col-sm-6 mb-4 wow fadeInUp" *ngIf="item.display">
+                            <app-card-service-unit [item]=item [selectedCategory]=selectedCategory></app-card-service-unit>
+                        </div>
+                    </ng-container>
+                </div>
             </div>
         </div>
     </div>

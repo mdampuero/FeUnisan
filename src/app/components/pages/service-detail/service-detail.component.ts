@@ -20,16 +20,18 @@ export class ServiceDetailComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService
   ) {
-    this.modelId=this.route.snapshot.paramMap.get("key");
-    this.categorySelected=this.route.snapshot.paramMap.get("category");
-    console.log(this.categorySelected);
+    this.route.paramMap.subscribe(params => {
+      this.ngOnInit();
+    });
    }
 
   goToCotization(id:any){
-    this.router.navigate(['solicitarCotizacion/'+id]);
+    this.router.navigate(['solicitarCotizacion/'+this.categorySelected+'/'+this.modelId]);
   }
   
   ngOnInit(): void {
+    this.modelId=this.route.snapshot.paramMap.get("key");
+    this.categorySelected=this.route.snapshot.paramMap.get("category");
     this.spinner.show();
     this.api.getModel(this.modelId).subscribe(
       (data:any) => {

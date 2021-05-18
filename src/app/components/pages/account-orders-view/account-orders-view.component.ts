@@ -35,7 +35,7 @@ export class AccountOrdersViewComponent implements OnInit {
         this.results=data;
       },
       (error) => {
-        console.error(error);
+        this.spinner.hide();
       },
       () => {
         this.ready=true;

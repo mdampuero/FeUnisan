@@ -62,7 +62,7 @@
                                             <tr *ngFor="let item of cartService.list; let i=index;">
                                                 <td>
                                                     <img *ngIf="item.picture" src="{{ environment.baseUrl }}uploads/sm/{{ item.picture }}"/>
-                                                    <img *ngIf="!item.picture" src="https://picsum.photos/seed/{{ item.id }}/260"/>
+                                                    <img *ngIf="!item.picture" src="../assets/no-foto.png"/>
                                                     {{ item.name }}
                                                 </td>
                                                 <td class="text-center">{{ item.currency.symbol }}
@@ -98,13 +98,11 @@
                                 </div>
                             </fieldset>
                             <fieldset *ngIf="step == 2">
-                                <div >
-                                    <h3>Datos personales</h3>
-                                    <p>Por favor ingrese su email para o inicie sesion con alguna de las redes
-                                        sociales.</p>
+                                <div class="text-center">
+                                    <p>Para continuar con el proceso de la compra no es necesario iniciar sesión o registrarse,<br/> solo indique su dirección de Email.</p>
                                     <form autocomplete="off" (ngSubmit)="save(step2)" #step2="ngForm">
                                         <div class="row">
-                                            <div class="col-md-8">
+                                            <div class="col-md-6 offset-md-3">
                                                 <div class="form-group">
                                                     <input class="form-control rounded-pill py-4 px-4" type="email"
                                                         [class.is-invalid]="step2_email.invalid && step2_email.touched"
@@ -115,12 +113,6 @@
                                                     <small *ngIf="step2_email.invalid && step2_email.touched"
                                                         class="form-text text-danger">Ingrese un correo  válido</small>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4 text-center" style="padding-top: 0;">
-                                                <a href=""><i class="bi-facebook" style="font-size:1.5rem;"></i></a>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <a href=""><i class="bi-google text-danger"
-                                                        style="font-size:1.5rem;"></i></a>
                                             </div>
                                         </div>
                                         <hr>
@@ -141,11 +133,10 @@
                                                     <label>Nombre completo</label>
                                                     <input class="form-control rounded-pill py-4 px-4"
                                                         [class.is-invalid]="step3_name.invalid && step3_name.touched"
-                                                        #step3_name="ngModel" required [(ngModel)]="form.step3.name"
+                                                        #step3_name="ngModel" required minlength="6" [(ngModel)]="form.step3.name"
                                                         name="step3_name">
                                                     <small *ngIf="step3_name.invalid && step3_name.touched"
-                                                        class="form-text text-danger">Este campo es
-                                                        obligatorio</small>
+                                                        class="form-text text-danger">Ingrese un nombre válido</small>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -154,8 +145,30 @@
                                                     <input class="form-control rounded-pill py-4 px-4"
                                                         [class.is-invalid]="step3_document.invalid && step3_document.touched"
                                                         #step3_document="ngModel" required [(ngModel)]="form.step3.document"
-                                                        name="document">
+                                                        name="document" minlength="6" maxlength="9">
                                                     <small *ngIf="step3_document.invalid && step3_document.touched"
+                                                        class="form-text text-danger">Ingrese un Nº válido</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Fono</label>
+                                                    <input class="form-control rounded-pill py-4 px-4"
+                                                        [class.is-invalid]="step3_phone.invalid && step3_phone.touched"
+                                                        #step3_phone="ngModel" required [(ngModel)]="form.step3.phone"
+                                                        name="phone" minlength="6">
+                                                    <small *ngIf="step3_phone.invalid && step3_phone.touched"
+                                                        class="form-text text-danger">Ingrese un Nº válido</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Región</label>
+                                                    <input class="form-control rounded-pill py-4 px-4"
+                                                        [class.is-invalid]="step3_provence.invalid && step3_provence.touched"
+                                                        #step3_provence="ngModel" required [(ngModel)]="form.step3.provence"
+                                                        name="provence">
+                                                    <small *ngIf="step3_provence.invalid && step3_provence.touched"
                                                         class="form-text text-danger">Este campo es
                                                         obligatorio</small>
                                                 </div>
@@ -172,35 +185,19 @@
                                                         obligatorio</small>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Dirección</label>
-                                                    <input class="form-control rounded-pill py-4 px-4"
+                                                    <textarea class="form-control rounded-pill py-4 px-4"
                                                         [class.is-invalid]="step3_address.invalid && step3_address.touched"
                                                         #step3_address="ngModel" required
-                                                        [(ngModel)]="form.step3.address" name="address">
+                                                        [(ngModel)]="form.step3.address" name="address"></textarea>
                                                     <small *ngIf="step3_address.invalid && step3_address.touched"
                                                         class="form-text text-danger">Este campo es
                                                         obligatorio</small>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <p>Puedes ingresar una contraseña para acceder luego a toda tu información
-                                        </p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Contraseña</label>
-                                                    <input class="form-control rounded-pill py-4 px-4" type="password">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Repita contraseña</label>
-                                                    <input class="form-control rounded-pill py-4 px-4" type="password">
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <hr>
                                         <div class="text-center py-3">

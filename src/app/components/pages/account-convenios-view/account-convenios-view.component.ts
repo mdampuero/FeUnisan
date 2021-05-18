@@ -36,7 +36,7 @@ export class AccountConveniosViewComponent implements OnInit {
         this.results = data[0];
       },
       (error) => {
-        console.error(error);
+        this.spinner.hide();
       },
       () => {
         this.ready=true;

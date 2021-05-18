@@ -13,6 +13,7 @@ export class LoginService {
     city: null,
     address: null,
     document: null,
+    role: null
   };
   constructor() {
     this.loadStorage();
@@ -39,6 +40,7 @@ export class LoginService {
       city: null,
       address: null,
       document: null,
+      role: null
     };
     this.saveStorage();
   }

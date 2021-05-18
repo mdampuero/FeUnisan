@@ -32,12 +32,12 @@ export class AccountConveniosComponent implements OnInit {
 
   getResults(){
     this.spinner.show();
-    this.apiService.convenios({Rut:this.loginService.user.document,Activo:this.filter.activo,IdConvenio:this.filter.IdConvenio}).subscribe(
+    this.apiService.convenios({Rut:this.loginService.user.document,EmailContacto:this.loginService.user.email,Activo:this.filter.activo,IdConvenio:this.filter.IdConvenio}).subscribe(
       (data:any) => {
         this.results = data;
       },
       (error) => {
-        console.error(error);
+        this.spinner.hide();
       },
       () => {
         this.spinner.hide();

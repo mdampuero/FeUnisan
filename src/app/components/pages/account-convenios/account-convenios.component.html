@@ -10,17 +10,17 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <label>ID</label>
-                            <input class="form-control" [(ngModel)]="filter.IdConvenio">
+                            <input class="form-control rounded-pill py-4 px-4" [(ngModel)]="filter.IdConvenio">
                         </div>
                         <div class="col-sm-3">
                             <label>Activo</label>
-                            <select class="form-control" [(ngModel)]="filter.activo">
+                            <select class="form-control rounded-pill py-4 px-4" [(ngModel)]="filter.activo">
                                 <option *ngFor="let s of activo; let i=index;" value="{{ s.id }}">{{ s.name }}</option>
                             </select>
                         </div>
                         <div class="col-sm-3">
                             <label>&nbsp;</label><br/>
-                            <button class="btn btn-block btn-primary" (click)="getResults()">Filtrar</button>
+                            <button class="btn btn-block btn-primary rounded-pill btn-primary px-5 py-3" (click)="getResults()">Filtrar</button>
                         </div>
                     </div>
                 </div>

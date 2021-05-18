@@ -20,11 +20,14 @@ export class ServicesComponent implements OnInit {
     private apiService:ApiService,
     private router: Router,
     private spinner: NgxSpinnerService) {
-      this.serviceId=this.route.snapshot.paramMap.get("key");
-      this.categorySelected=this.route.snapshot.paramMap.get("category");
+      this.route.paramMap.subscribe(params => {
+        this.ngOnInit();
+      });
     }
 
     ngOnInit(): void {
+      this.serviceId=this.route.snapshot.paramMap.get("key");
+      this.categorySelected=this.route.snapshot.paramMap.get("category");
       this.spinner.show();
       this.apiService.servicesGetById(this.serviceId,this.categorySelected).subscribe(
         (data:any) => {

@@ -96,6 +96,18 @@ export class ApiService {
       );
   }
   
+  filters(query: string) {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}filtersByGroup`
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+  
   getCategories() {
     return this.http
       .get(
@@ -196,6 +208,14 @@ export class ApiService {
     });
   }
   
+  validate(form: any,id: String | null,code: String | null) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}customersValidateConfirm`, {
+      password: form.password1,
+      id:id,
+      code:code
+    });
+  }
+  
   checkCustomer(email: string) {
     return this.http.post(`${environment.baseUrl}${environment.apiUrl}customers_check`, {
       email: email
@@ -203,13 +223,16 @@ export class ApiService {
   }
 
   saveCustomer(email: string) {
-    return this.http.post(`${environment.baseUrl}${environment.apiUrl}customers`, {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}customersByEmail`, {
       email: email
     });
   }
 
+  editProfile(customer: any) {
+    return this.http.put(`${environment.baseUrl}${environment.apiUrl}customersProfile/${customer.id}`, customer);
+  }
+  
   editCustomer(customer: any) {
-    console.log(customer);
     return this.http.put(`${environment.baseUrl}${environment.apiUrl}customers/${customer.id}`, customer);
   }
   
@@ -243,6 +266,12 @@ export class ApiService {
       
     });
   }
+  
+  deleteUser(userId:any) {
+    return this.http.delete(`${environment.baseUrl}${environment.apiUrl}customers/${userId}`, {
+      
+    });
+  }
 
   getOrders(status:any,id:any) {
     return this.http
@@ -254,6 +283,21 @@ export class ApiService {
           return data;
         })
       );
+  }
+  
+  getUsers() {
+    return this.http
+      .get(
+        `${environment.baseUrl}${environment.apiUrl}customersOperators/${this.loginService.user.id}`
+      )
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
+  }
+  addUser(data:any) {
+    return this.http.post(`${environment.baseUrl}${environment.apiUrl}customersOperators/${this.loginService.user.id}`, data);
   }
   
   getPopup() {

@@ -43,6 +43,8 @@ import { CarouselComponent } from './components/utils/carousel/carousel.componen
 import { PopupsComponent } from './components/utils/popups/popups.component';
 import { NoResultsComponent } from './components/utils/no-results/no-results.component';
 import { CardModelUnitComponent } from './components/utils/card-model-unit/card-model-unit.component';
+import { ValidateComponent } from './components/pages/validate/validate.component';
+import { AccountUsersComponent } from './components/pages/account-users/account-users.component';
 // import { NlbrPipe } from './pipes/nlbr.pipe';
 
 @NgModule({
@@ -81,6 +83,8 @@ import { CardModelUnitComponent } from './components/utils/card-model-unit/card-
     PopupsComponent,
     NoResultsComponent,
     CardModelUnitComponent,
+    ValidateComponent,
+    AccountUsersComponent,
     // NlbrPipe
   ],
   entryComponents:[

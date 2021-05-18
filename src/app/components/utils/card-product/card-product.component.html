@@ -1,6 +1,6 @@
 <div class="card-service cursor-pointer" (click)="goToProduct(item.id)">
     <div class="img" *ngIf="item.picture" style="background-image: url('{{ environment.baseUrl }}uploads/sm/{{ item.picture }}');"></div>
-    <div class="img" *ngIf="!item.picture" style="background-image: url('https://picsum.photos/seed/{{ item.id }}/260');"></div>
+    <div class="img" *ngIf="!item.picture" style="background-image: url('assets/no-foto.png');"></div>
     <div class="caption">
         <h4>{{ item.name }}</h4>
         <hr>

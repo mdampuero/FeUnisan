@@ -5,8 +5,13 @@
         <p>
             <a href="javascript:window.history.go(-1);"> <i class="bi bi-arrow-left"></i> Volver</a>
         </p>
-        <p *ngIf="ready">
-            <span><a routerLink="/servicios"> Unidades sanitarias </a> | <a routerLink="/servicios/{{ data.id }}"> {{ data.name }} </a> | Formulario de cotización</span>
+        <p *ngIf=ready>
+            <span *ngIf="categorySelected=='forIndustry'">Para la Industria | </span>  
+            <span *ngIf="categorySelected=='forHome'">Para Hogar | </span> 
+            <span *ngIf="categorySelected=='forEvent'">Para Eventos | </span>  
+            <span><a routerLink="/servicios/{{ categorySelected }}/{{ data.service.id }}">{{ data.service.name }}</a> | </span>
+            <span><a routerLink="/servicio/{{ categorySelected }}/{{ data.id }}">{{ data.name }}</a> | </span>
+            <span>Formulario de cotización</span>
         </p>
     </div>
 </div>
@@ -20,46 +25,104 @@
                 <div class="col-sm-12 form-group">
                     <label>Servicio</label> 
                     <input class="form-control rounded-pill py-4 px-4" type="text"
-                        [(ngModel)]="form.cotization.serviceName" name="serviceName" disabled="disabled"
-                        #cotization_serviceName="ngModel" required minlength="5">
+                        [(ngModel)]="form.cotization.modelName" name="modelName" disabled="disabled"
+                        #cotization_modelName="ngModel" required minlength="5">
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label>Nombre Completo</label>
+                    <label>Razón Social *</label>
                     <input class="form-control rounded-pill py-4 px-4" type="text"
-                        [class.is-invalid]="cotization_clientName.invalid && cotization_clientName.touched"
-                        [(ngModel)]="form.cotization.clientName" name="clientName"
-                        #cotization_clientName="ngModel" required minlength="5">
-                    <small *ngIf="cotization_clientName.invalid && cotization_clientName.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                        [class.is-invalid]="cotization_company.invalid && cotization_company.touched"
+                        [(ngModel)]="form.cotization.company" name="company"
+                        #cotization_company="ngModel" required >
+                    <small *ngIf="cotization_company.invalid && cotization_company.touched" class="form-text text-danger">Ingrese un valor válido</small>
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label>E-Mail</label>
+                    <label>RUT *</label>
                     <input class="form-control rounded-pill py-4 px-4" type="text"
-                        [class.is-invalid]="cotization_clientEmail.invalid && cotization_clientEmail.touched"
-                        [(ngModel)]="form.cotization.clientEmail" name="clientEmail"
-                        #cotization_clientEmail="ngModel" required minlength="5" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                    <small *ngIf="cotization_clientEmail.invalid && cotization_clientEmail.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                        [class.is-invalid]="cotization_rut.invalid && cotization_rut.touched"
+                        [(ngModel)]="form.cotization.rut" name="rut"
+                        #cotization_rut="ngModel" required minlength="5">
+                    <small *ngIf="cotization_rut.invalid && cotization_rut.touched" class="form-text text-danger">Ingrese un valor válido</small>
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label>Fono</label>
+                    <label>Dirección comercial *</label>
                     <input class="form-control rounded-pill py-4 px-4" type="text"
-                        [class.is-invalid]="cotization_clientPhone.invalid && cotization_clientPhone.touched"
-                        [(ngModel)]="form.cotization.clientPhone" name="clientPhone"
-                        #cotization_clientPhone="ngModel" required minlength="5">
-                    <small *ngIf="cotization_clientPhone.invalid && cotization_clientPhone.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                        [class.is-invalid]="cotization_comercialAddressStreet.invalid && cotization_comercialAddressStreet.touched"
+                        [(ngModel)]="form.cotization.comercialAddressStreet" name="comercialAddressStreet"
+                        #cotization_comercialAddressStreet="ngModel" required >
+                    <small *ngIf="cotization_comercialAddressStreet.invalid && cotization_comercialAddressStreet.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label>Nº</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_comercialAddressNumber.invalid && cotization_comercialAddressNumber.touched"
+                        [(ngModel)]="form.cotization.comercialAddressNumber" name="comercialAddressNumber"
+                        #cotization_comercialAddressNumber="ngModel" >
+                    <small *ngIf="cotization_comercialAddressNumber.invalid && cotization_comercialAddressNumber.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label>Comuna</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_comercialAddressCity.invalid && cotization_comercialAddressCity.touched"
+                        [(ngModel)]="form.cotization.comercialAddressCity" name="comercialAddressCity"
+                        #cotization_comercialAddressCity="ngModel" >
+                    <small *ngIf="cotization_comercialAddressCity.invalid && cotization_comercialAddressCity.touched" class="form-text text-danger">Ingrese un valor válido</small>
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label>Ciudad</label>
+                    <label>Dirección del servicio *</label>
                     <input class="form-control rounded-pill py-4 px-4" type="text"
-                        [class.is-invalid]="cotization_clientCity.invalid && cotization_clientCity.touched"
-                        [(ngModel)]="form.cotization.clientCity" name="clientCity"
-                        #cotization_clientCity="ngModel" required minlength="5">
-                    <small *ngIf="cotization_clientCity.invalid && cotization_clientCity.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                        [class.is-invalid]="cotization_serviceAddressStreet.invalid && cotization_serviceAddressStreet.touched"
+                        [(ngModel)]="form.cotization.serviceAddressStreet" name="serviceAddressStreet"
+                        #cotization_serviceAddressStreet="ngModel" required >
+                    <small *ngIf="cotization_serviceAddressStreet.invalid && cotization_serviceAddressStreet.touched" class="form-text text-danger">Ingrese un valor válido</small>
                 </div>
-                <div class="col-sm-12 form-group">
-                    <label>Dirección</label>
-                    <textarea class="form-control rounded-pill py-4 px-4" 
-                        [(ngModel)]="form.cotization.clientAddress" name="clientAddress"
-                        #cotization_clientAddress="ngModel" ></textarea>
+                <div class="col-sm-2 form-group">
+                    <label>Nº</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_serviceAddressNumber.invalid && cotization_serviceAddressNumber.touched"
+                        [(ngModel)]="form.cotization.serviceAddressNumber" name="serviceAddressNumber"
+                        #cotization_serviceAddressNumber="ngModel" >
+                    <small *ngIf="cotization_serviceAddressNumber.invalid && cotization_serviceAddressNumber.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label>Comuna</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_serviceAddressCity.invalid && cotization_serviceAddressCity.touched"
+                        [(ngModel)]="form.cotization.serviceAddressCity" name="serviceAddressCity"
+                        #cotization_serviceAddressCity="ngModel" >
+                    <small *ngIf="cotization_serviceAddressCity.invalid && cotization_serviceAddressCity.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Nombre Completo *</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_name.invalid && cotization_name.touched"
+                        [(ngModel)]="form.cotization.name" name="name"
+                        #cotization_name="ngModel" required minlength="5">
+                    <small *ngIf="cotization_name.invalid && cotization_name.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Fono *</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_phone.invalid && cotization_phone.touched"
+                        [(ngModel)]="form.cotization.phone" name="phone"
+                        #cotization_phone="ngModel" required minlength="5">
+                    <small *ngIf="cotization_phone.invalid && cotization_phone.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>E-Mail *</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_email.invalid && cotization_email.touched"
+                        [(ngModel)]="form.cotization.email" name="email"
+                        #cotization_email="ngModel" required minlength="5" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <small *ngIf="cotization_email.invalid && cotization_email.touched" class="form-text text-danger">Ingrese un valor válido</small>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Frecuencia del servicio</label>
+                    <input class="form-control rounded-pill py-4 px-4" type="text"
+                        [class.is-invalid]="cotization_frequency.invalid && cotization_frequency.touched"
+                        [(ngModel)]="form.cotization.frequency" name="frequency"
+                        #cotization_frequency="ngModel" >
+                    <small *ngIf="cotization_frequency.invalid && cotization_frequency.touched" class="form-text text-danger">Ingrese un valor válido</small>
                 </div>
                 <div class="col-sm-12 form-group">
                     <label>Observaciones</label>

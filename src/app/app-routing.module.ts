@@ -16,19 +16,23 @@ import { ForgotPasswordComponent } from './components/pages/forgot-password/forg
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { ServicesComponent } from './components/pages/services/services.component';
 import { ServiceDetailComponent } from './components/pages/service-detail/service-detail.component';
+import { ValidateComponent } from './components/pages/validate/validate.component';
+import { AccountUsersComponent } from './components/pages/account-users/account-users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'olvideMiContrasena', component: ForgotPasswordComponent},
   { path: 'blanquearMiContrasena/:id/:code', component: ResetPasswordComponent},
+  { path: 'validarCuenta/:id/:code', component: ValidateComponent},
   { path: 'productos', component: ProductsComponent},
   { path: 'servicios/:category/:key', component: ServicesComponent},
   { path: 'servicio/:category/:key', component: ServiceDetailComponent},
   { path: 'misdatos', component: AccountComponent},
   { path: 'convenios', component: AccountConveniosComponent},
+  { path: 'usuarios', component: AccountUsersComponent},
   { path: 'convenios/:key', component: AccountConveniosViewComponent},
   { path: 'productos/destacados', component: SalientsComponent},
-  { path: 'solicitarCotizacion/:id', component: CotizationComponent},
+  { path: 'solicitarCotizacion/:category/:key', component: CotizationComponent},
   { path: 'carrito', component: CartComponent},
   { path: 'pedidos', component: AccountOrdersComponent},
   { path: 'pedidos/:id', component: AccountOrdersViewComponent},
@@ -38,7 +42,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled',onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,87 @@
+<app-navbar [fixed]=false></app-navbar>
+<div class="container">
+    <div class="account">
+        <div class="row">
+            <div class="col-md-3 menu p-4 pb-5">
+                <app-menu></app-menu>
+            </div>
+            <div class="col-md-9 action p-4">
+                <div class="box-detail p-3">
+                    <button type="button" (click)="toggle()" class="p-0 btn btn-clear rounded float-right btn-sm">
+                        <i *ngIf="open" class="bi bi-dash-circle-fill text-primary" style="font-size: 1.5rem;"></i>
+                        <i *ngIf="!open" class="bi bi-plus-circle-fill text-primary" style="font-size: 1.5rem;"></i>
+                    </button>
+                    <h4>Crear usuario</h4>
+                    <form  (ngSubmit)="save(user)" #user="ngForm" *ngIf="open">
+                    <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>Nombre</label>
+                                <input class="form-control rounded-pill py-4 px-4" type="name"
+                                [class.is-invalid]="user_name.invalid && user_name.touched"
+                                [(ngModel)]="form.user.name" name="name"
+                                #user_name="ngModel" required minlength="6">
+                                <small *ngIf="user_name.invalid && user_name.touched"
+                                class="form-text text-danger">Ingrese un nombre válido</small>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Email</label>
+                                <input class="form-control rounded-pill py-4 px-4" type="email"
+                                [class.is-invalid]="user_email.invalid && user_email.touched"
+                                [(ngModel)]="form.user.email" name="email"
+                                #user_email="ngModel" required minlength="5"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                <small *ngIf="user_email.invalid && user_email.touched"
+                                class="form-text text-danger">Ingrese un email válido</small>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Teléfono</label>
+                                <input class="form-control rounded-pill py-4 px-4" type="tel"
+                                [class.is-invalid]="user_phone.invalid && user_phone.touched"
+                                [(ngModel)]="form.user.phone" name="phone"
+                                #user_phone="ngModel">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p>
+                                <small *ngIf="failed" class="form-text text-danger">El Email ya existe</small>
+                            </p>
+                            <button class="btn-get-started rounded-pill btn-primary px-5 py-3 " >Aceptar</button>
+                        </div>
+                    </form>
+                </div>
+                <app-no-results *ngIf="results.length == 0"></app-no-results>
+                <table class="table mt-4" *ngIf="results.length > 0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col" class="text-center">Fecha de alta</th>
+                            <th scope="col" class="text-center">Validado</th>
+                            <th scope="col" class="text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of results; let i=index;" class="cursor-pointer" >
+                            <th scope="row">{{ item.name }}</th>
+                            <th scope="row">{{ item.email }}</th>
+                            <th scope="row">{{ item.phone }}</th>
+                            <td class="text-center">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+                            <td class="text-center">
+                                <span *ngIf="item.isValidate" class="badge badge-success">SI</span>
+                                <span *ngIf="!item.isValidate" class="badge badge-danger">NO</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-clear" (click)="deleteUser(item.id)">
+                                    <i class="bi bi-trash text-danger" style="font-size: 1rem;"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-popups [section]="'ACCOUNT-USERS'"></app-popups>

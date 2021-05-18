@@ -19,21 +19,26 @@ export class CotizationComponent implements OnInit {
   public cotization_failed=false;
   public ready:boolean = false;
   public environment:any=environment;
-  public name='';
-  public phone='';
-  public email='';
-  public observation='';
+  public categorySelected:any;
+  public modelId:any;
 
   public form:any={
     cotization:{
-      clientName:'',
-      clientEmail:'',
-      clientPhone:'',
-      clientCity:'',
-      clientAddress:'',
-      serviceName:'',
-      service:'',
+      name:'',
+      company:'',
+      email:'',
+      phone:'+569',
+      modelName:'',
+      model:'',
       observation:'',
+      comercialAddressCity: "",
+      comercialAddressNumber: "",
+      comercialAddressStreet: "",
+      serviceAddressCity: "",
+      serviceAddressNumber: "",
+      serviceAddressStreet: "",
+      rut:"",
+      frequency:""
     }
   }
   constructor(
@@ -42,15 +47,18 @@ export class CotizationComponent implements OnInit {
     private router: Router,
     public toastService: ToastService,
     private spinner: NgxSpinnerService
-  ) { }
+  ) { 
+    this.modelId=this.route.snapshot.paramMap.get("key");
+    this.categorySelected=this.route.snapshot.paramMap.get("category");
+  }
 
   ngOnInit(): void {
     this.spinner.show();
-    this.apiService.getService(this.route.snapshot.paramMap.get("id")).subscribe(
+    this.apiService.getModel(this.modelId).subscribe(
       (data:any) => {
         this.data=data;
-        this.form.cotization.serviceName=data.name
-        this.form.cotization.service=data.id
+        this.form.cotization.modelName=data.name
+        this.form.cotization.model=data.id
       },
       (error) => {
         console.error(error);

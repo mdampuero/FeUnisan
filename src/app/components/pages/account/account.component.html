@@ -35,15 +35,6 @@
                                     class="form-text text-danger">Ingrese un email válido</small>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>RUT</label>
-                            <input class="form-control rounded-pill py-4 px-4" type="text"
-                                    [class.is-invalid]="account_document.invalid && account_document.touched"
-                                    [(ngModel)]="form.account.document" name="document"
-                                    #account_document="ngModel" required minlength="5">
-                                <small *ngIf="account_document.invalid && account_document.touched"
-                                    class="form-text text-danger">Ingrese un RUT válido</small>
-                        </div>
-                        <div class="col-md-6 form-group">
                             <label>Fono</label>
                             <input class="form-control rounded-pill py-4 px-4" type="text"
                                     [class.is-invalid]="account_phone.invalid && account_phone.touched"

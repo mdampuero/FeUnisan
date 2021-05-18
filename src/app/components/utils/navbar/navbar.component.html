@@ -8,19 +8,85 @@
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <ng-container  *ngFor="let category of categories; let i=index;">
-            <li>
-              <a (click)="goToService(category.id,'ALL')" href="#services">{{ category.label }}</a>
-              <ul *ngIf="category.subcategories.length > 0">
-                <ng-container  *ngFor="let subcategory of category.subcategories; let j=index;">
-                  <li *ngIf="subcategory.isDelete == false"><a (click)="goToService(category.id,subcategory.id)" href="#services">{{ subcategory.name }}</a></li>
-                </ng-container>
-              </ul>
-            </li>
-          </ng-container>
+          <li>
+            <a (click)="goToService('forHome')" href="#services">Para el Hogar</a>
+            <ul *ngIf="results.forHome.length > 0">
+              <ng-container *ngFor="let service of results.forHome; let j=index;">
+                <li style="line-height: 50px;min-width: 300px;">
+                  <a routerLink="/servicios/forHome/{{ service.id }}">
+                    <img *ngIf="service.picture" src="{{ environment.baseUrl }}uploads/xs/{{ service.picture }}" class="circle"> 
+                    <img *ngIf="!service.picture" src="assets/no-foto.png" class="circle"> 
+                    {{ service.name }}</a>
+                  <ul *ngIf="service.models.length > 0">
+                    <ng-container *ngFor="let model of service.models; let h=index;">
+                      <li style="line-height: 50px;min-width: 300px;" *ngIf="model.forHome">
+                        <a routerLink="/servicio/forHome/{{ model.id }}"> 
+                          <img *ngIf="model.picture" src="{{ environment.baseUrl }}uploads/xs/{{ model.picture }}" class="circle"> 
+                          <img *ngIf="!model.picture" src="assets/no-foto.png" class="circle"> 
+                          {{ model.name }}
+                        </a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+          <li>
+            <a (click)="goToService('forIndustry')" href="#services">Para la Industria</a>
+            <ul *ngIf="results.forIndustry.length > 0">
+              <ng-container *ngFor="let service of results.forIndustry; let j=index;">
+                <li style="line-height: 50px;min-width: 300px;">
+                  <a routerLink="/servicios/forIndustry/{{ service.id }}">
+                    <img *ngIf="service.picture" src="{{ environment.baseUrl }}uploads/xs/{{ service.picture }}" class="circle"> 
+                    <img *ngIf="!service.picture" src="assets/no-foto.png" class="circle"> 
+                    {{ service.name }}</a>
+                  <ul *ngIf="service.models.length > 0">
+                    <ng-container *ngFor="let model of service.models; let h=index;">
+                      <li style="line-height: 50px;min-width: 300px;" *ngIf="model.forIndustry">
+                        <a routerLink="/servicio/forIndustry/{{ model.id }}"> 
+                          <img *ngIf="model.picture" src="{{ environment.baseUrl }}uploads/xs/{{ model.picture }}" class="circle"> 
+                          <img *ngIf="!model.picture" src="assets/no-foto.png" class="circle"> 
+                          {{ model.name }}
+                        </a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+          <li>
+            <a (click)="goToService('forEvent')" href="#services">Para Eventos</a>
+            <ul *ngIf="results.forEvent.length > 0">
+              <ng-container *ngFor="let service of results.forEvent; let j=index;">
+                <li style="line-height: 50px;min-width: 300px;">
+                  <a routerLink="/servicios/forEvent/{{ service.id }}">
+                    <img *ngIf="service.picture" src="{{ environment.baseUrl }}uploads/xs/{{ service.picture }}" class="circle"> 
+                    <img *ngIf="!service.picture" src="assets/no-foto.png" class="circle"> 
+                    {{ service.name }}</a>
+                  <ul *ngIf="service.models.length > 0">
+                    <ng-container *ngFor="let model of service.models; let h=index;">
+                      <li style="line-height: 50px;min-width: 300px;" *ngIf="model.forEvent">
+                        <a routerLink="/servicio/forEvent/{{ model.id }}"> 
+                          <img *ngIf="model.picture" src="{{ environment.baseUrl }}uploads/xs/{{ model.picture }}" class="circle"> 
+                          <img *ngIf="!model.picture" src="assets/no-foto.png" class="circle"> 
+                          {{ model.name }}
+                        </a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
           <li routerLinkActive="menu-active"><a routerLink="/productos">Tiendo Online</a></li>
           <li class="icon">
-            <a routerLink="/pedidos" class="p-0">
+            <a *ngIf="!loginService.user.id" routerLink="/pedidos" class="p-0">
+              <span class="total-badge"><i class="bi bi-box-arrow-in-right" style="font-size: inherit;"></i></span>
+              Ingresar
+            </a>
+            <a *ngIf="loginService.user.id" routerLink="/pedidos" class="p-0">
               <span class="total-badge"><i class="bi bi-person" style="font-size: inherit;"></i></span>
               Mi perfil
             </a>

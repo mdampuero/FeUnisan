@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/db/cart.service';
 import { LoginService } from 'src/app/services/db/login.service';
 import { Events } from 'src/app/services/events.service';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,12 @@ import { Events } from 'src/app/services/events.service';
 export class NavbarComponent implements OnInit {
   categories: any[] = [];
   @Input() fixed: boolean = true;
+  results: any = {
+    forHome:[],
+    forIndustry:[],
+    forEvent:[]
+  };
+  public environment:any=environment;
   constructor(
     public loginService:LoginService,
     public cartService:CartService,
@@ -20,10 +27,12 @@ export class NavbarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.apiService.getCategoriesService().subscribe(
+    
+    this.apiService.models("").subscribe(
       (data:any) => {
-        this.categories=data["data"];
-        console.log(this.categories);
+        this.results.forHome=data.forHome;
+        this.results.forIndustry=data.forIndustry;
+        this.results.forEvent=data.forEvent;
       },
       (error) => {
         console.error(error);
@@ -39,10 +48,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  goToService(service: any,subservice: any){
+  goToService(service: any){
     this.events.publish('service', {
       serviceSelected: service,
-      subserviceSelected: subservice,
     });
   }
 

@@ -16,9 +16,9 @@
             <div class="col-md-6 py-4 px-5">
                 <img *ngIf="data.picture" src="{{ environment.baseUrl }}uploads/lg/{{ data.picture }}" class="w-100"
                     alt="{{ data.name }}">
-                <!-- <img *ngIf="!data.picture" src="../assets/no-foto.png" class="w-100" alt="{{ data.name }}"> -->
-                <img *ngIf="!data.picture" src="https://picsum.photos/seed/{{ data.id }}/500" class="w-100"
-                    alt="{{ data.name }}">
+                <img *ngIf="!data.picture" src="../assets/no-foto.png" class="w-100" alt="{{ data.name }}">
+                <!-- <img *ngIf="!data.picture" src="https://picsum.photos/seed/{{ data.id }}/500" class="w-100"
+                    alt="{{ data.name }}"> -->
             </div>
             <div class="col-md-6 description">
                 <h3>{{ data.name }}</h3>

@@ -19,7 +19,6 @@ export class AccountComponent implements OnInit {
       id:'',
       name:'',
       email:'',
-      document,
       phone:'',
       provence:'',
       city:'',
@@ -47,7 +46,7 @@ export class AccountComponent implements OnInit {
       return;
     }else{
       this.spinner.show();
-      this.apiService.editCustomer(this.form.account).subscribe(
+      this.apiService.editProfile(this.form.account).subscribe(
         (data:any) => {
           this.loginService.login(data);
           this.spinner.hide();
@@ -73,7 +72,6 @@ export class AccountComponent implements OnInit {
     this.form.account.id=this.loginService.user.id;
     this.form.account.name=this.loginService.user.name;
     this.form.account.email=this.loginService.user.email;
-    this.form.account.document=this.loginService.user.document;
     this.form.account.phone=this.loginService.user.phone;
     this.form.account.provence=this.loginService.user.provence;
     this.form.account.city=this.loginService.user.city;

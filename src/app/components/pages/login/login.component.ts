@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       (data:any) => {
         this.spinner.hide();
         this.loginService.login(data);
-        this.router.navigate(['']);
+        this.router.navigate(['/pedidos']);
       },
       (error) => {
         this.spinner.hide();
