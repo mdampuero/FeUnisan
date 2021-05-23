@@ -45,6 +45,7 @@ import { NoResultsComponent } from './components/utils/no-results/no-results.com
 import { CardModelUnitComponent } from './components/utils/card-model-unit/card-model-unit.component';
 import { ValidateComponent } from './components/pages/validate/validate.component';
 import { AccountUsersComponent } from './components/pages/account-users/account-users.component';
+import { AccountContratosComponent } from './components/pages/account-contratos/account-contratos.component';
 // import { NlbrPipe } from './pipes/nlbr.pipe';
 
 @NgModule({
@@ -85,6 +86,7 @@ import { AccountUsersComponent } from './components/pages/account-users/account-
     CardModelUnitComponent,
     ValidateComponent,
     AccountUsersComponent,
+    AccountContratosComponent,
     // NlbrPipe
   ],
   entryComponents:[

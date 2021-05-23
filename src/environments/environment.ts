@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://dev.unisan.cl/',
-  apiUrl: 'app_dev.php/api/',
-  url: 'http://localhost:4200'
+  // baseUrl: 'http://dev.unisan.cl/',
+  // apiUrl: 'app_dev.php/api/',
+  // url: 'http://localhost:4200'
+  baseUrl: 'http://be.unisan.cl/',
+  apiUrl: 'api/',
+  url: 'http://fe.unisan.cl/'
 };
 
 /*

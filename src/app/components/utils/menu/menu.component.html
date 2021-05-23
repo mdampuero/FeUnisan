@@ -8,6 +8,9 @@
     <li class="list-group-item p-3">
         <a class="my-1 p-2 pl-4" routerLinkActive="active" routerLink="/convenios">Mis convenios</a>
     </li>
+    <li class="list-group-item p-3">
+        <a class="my-1 p-2 pl-4" routerLinkActive="active" routerLink="/contratos">Mis contratos</a>
+    </li>
     <li class="list-group-item p-3" *ngIf="loginService['user']['role']=='ROLE_CUSTOMER_SUPER'">
         <a class="my-1 p-2 pl-4" routerLinkActive="active" routerLink="/usuarios">Usuarios</a>
     </li>

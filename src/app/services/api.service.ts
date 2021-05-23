@@ -72,6 +72,19 @@ export class ApiService {
       );
   }
   
+  contratos(query:any) {
+    return this.http
+      .post(
+        `${environment.baseUrl}${environment.apiUrl}contratosByRut`,
+        { query }
+      )
+      .pipe(
+        map((data:any) => {
+          return data;
+        })
+      );
+  }
+  
   services(query: string) {
     return this.http
       .get(

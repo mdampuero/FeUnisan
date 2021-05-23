@@ -18,6 +18,7 @@ import { ServicesComponent } from './components/pages/services/services.componen
 import { ServiceDetailComponent } from './components/pages/service-detail/service-detail.component';
 import { ValidateComponent } from './components/pages/validate/validate.component';
 import { AccountUsersComponent } from './components/pages/account-users/account-users.component';
+import { AccountContratosComponent } from './components/pages/account-contratos/account-contratos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'servicio/:category/:key', component: ServiceDetailComponent},
   { path: 'misdatos', component: AccountComponent},
   { path: 'convenios', component: AccountConveniosComponent},
+  { path: 'contratos', component: AccountContratosComponent},
   { path: 'usuarios', component: AccountUsersComponent},
   { path: 'convenios/:key', component: AccountConveniosViewComponent},
   { path: 'productos/destacados', component: SalientsComponent},
